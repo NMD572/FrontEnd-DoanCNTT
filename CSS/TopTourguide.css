@@ -1,0 +1,78 @@
+#infoTourguideAndMyShop{
+    border:solid red;
+    height: 80vh;
+    width: 100%;
+    position: relative;
+}
+.infoGrid{
+    height: 75%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+}
+#infoMyShop{
+    height: 25%;
+    background-color: var(--primary-color);
+}
+.infoGridItem{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: var(--white-text-color);
+    position: relative;
+    overflow: hidden;
+}
+.infoGridItem > img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.infoTourguide{
+    color: var(--white-text-color);
+    font-size: 1.5rem;
+}
+.infoTourguide>div{
+    padding: 5px 0;
+}
+.infoTourguide>div>a{
+    cursor: pointer;
+    margin-right: 10px;
+}
+.infoGridItem>img:hover+.infoTourguide,.infoTourguide:hover{
+    font-size:1.2rem;
+    display: block;
+    /*z-index: 20;*/
+    animation: text-pop-up ease-in 0.3s;
+    background-color: var(--primary-color);
+    transform: translateY(-100%);
+}
+.infoText{
+    /*padding: calc((100% - 4.5rem - 10px)/2) 0;*/
+    transform: translateY(calc((100% - 4.5rem - 10px)/2));
+    font-size:1.5rem;
+}
+.infoData{
+    width: 100%;
+    height: calc(3rem+10px);
+    line-height: calc(3rem+10px);
+    padding-bottom: 10px;   
+    font-weight: 1200;
+    font-size: 3rem;
+}
+.infoBuff{
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+@keyframes text-pop-up{
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-100%);
+    }
+}

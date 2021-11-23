@@ -1,0 +1,58 @@
+#nationalResort{
+    margin:100px 0;
+    text-align: center;
+}
+#nationalResortTitle::first-line{
+    font-size: 3rem;
+    font-family: var(--special-font-family);
+    color:var(--primary-color);
+}
+#resortTitle{
+    font-size: 4.7rem;
+}
+#descriptionResort{
+    margin-top:20px;
+    margin-bottom: 40px;
+    font-size:1.5rem;
+}
+#nationalResortContent{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.nationalResortItem{
+    border-radius: 100%;
+    position: relative;
+    height: 500px;
+    width: 500px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+.nationalResortItem>a>img{
+    border-radius: 100%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.nationalResortItem>a+div{
+    font-size: 5rem;
+    font-family: var(--special-font-family);
+    color:var(--white-text-color);
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.nationalResortItem>a>img:hover{
+    animation: zoom linear 0.5s;
+    transform: scale(1.1, 1.1);
+}
+@keyframes zoom {
+    from {
+      transform: scale(1, 1);
+    }
+    to {
+      transform: scale(1.1, 1.1);
+    }
+  }

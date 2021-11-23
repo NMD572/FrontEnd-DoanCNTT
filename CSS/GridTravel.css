@@ -1,0 +1,104 @@
+#divGrid{
+    border:solid;
+}
+.layoutGrid{
+    display: grid;
+    /*grid-template-columns: column-size column-size ...*/
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    column-gap: 10px;
+}
+.gridItem{
+   position: relative;
+   height: 40vh;
+   box-shadow: 0 0 5px rgba(0,0, 0, 0.3);
+   background-color: var(--white-background-color);
+}
+.gridImgContainer{
+   height: 40%;
+   overflow: hidden;
+}
+.infoTravel{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 10%;
+    background-color: var(--primary-color);
+    font-size: 0.85rem;
+}
+.infoTravel>div{
+    margin-left: 10px;
+    margin-right: 10px;
+    color: var(--white-text-color);
+}
+.infoTravelText{
+    padding: 3.5% 2.5%;
+    height: 40%;
+}
+.infoTravel i{
+    margin-right: 5px;
+}
+
+.gridBigImgContainer{
+    /*Theo cha .gridItem(relative)*/
+    position:absolute;
+    /*Dịch qua trái = độ rộng của .gridItem*/
+    left: 100%;
+    /*Khoảng cách từ trên xuống là 0*/
+    top: 0;
+    width: 0;
+    height: 0;
+    margin-left: 9.5px;
+    /*Set animation khi hiện ảnh này*/
+    -webkit-transition: width 0.3s linear 0s;
+    transition: width 0.3s linear 0s;
+    /*z-index để ưu tiên ảnh này hiện lên trước*/
+    z-index: 1;
+}
+.gridImg{
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.gridBigImgContainer>img{
+    border-radius: 5px;
+}
+.gridImg:hover{
+    animation: zoom linear 0.5s;
+    transform: scale(1.1, 1.1);
+}
+@keyframes zoom {
+    from {
+      transform: scale(1, 1);
+    }
+    to {
+      transform: scale(1.1, 1.1);
+    }
+  }
+/*Open big image*/
+/*
+.gridImgContainer:hover + .gridBigImgContainer{
+    height: 40vh;
+    width: 40vw;
+}
+*/
+.infoTravelText :is(h3, div) {
+    margin-bottom: 3%;
+}
+.infoTravelText :last-child *{
+    margin-right: 2%;
+}
+.infoTravelText :last-child :first-child {
+    font-size:0.85rem;
+    margin-right: 0px !important;
+}
+.infoTravelText textarea{
+    border: none;
+    resize: none;
+    background-color: inherit;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    height: 100%;
+    width: 100%;
+}

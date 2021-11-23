@@ -1,0 +1,128 @@
+#divSlider{
+    height: 45vh;
+    width: 100%;
+    position: relative;
+}
+.slider-previous, .slider-next{
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    position: absolute;
+    top: calc(50%);
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    color: #999;
+    cursor: pointer;
+    z-index: 1;
+}
+.slider-previous{
+    left: 5%;
+}
+.slider-next{
+    left: 95%;
+}
+.slider-dots, .slider-main{
+    list-style-type: none;
+}
+.slider-dots{
+    position: absolute;
+    left:50%;
+    /*Để căn giữa*/
+    /*Dịch qua trái 1 khoảng là: độ rộng là 50% của kích thước slider-dots(phần tử đang cấu hình)*/
+    transform: translateX(-50%);
+    bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    color: var(--grey-dot-color);
+    cursor: pointer;
+}
+.slider-dot-item{
+    margin-right: 5px;
+    font-size:20px;
+}
+:is(.slider-previous, .slider-next):hover {
+    color: var(--primary-color);
+}
+.slider-dot-item.active{
+    color: var(--primary-color);
+}
+.slider-wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.slider-main{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    transition: transform 0.5s;
+}
+.slider-item{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    user-select: none;
+}
+.slider-item>img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.introduce-first-Text, .introduce-main-Text, .introduce-sub-text{
+    position: absolute;
+    height: 60%;
+    width: 100%;
+    color: var(--white-text-color);
+    text-align: center;
+}
+.introduce-first-Text{
+    font-family: var(--special-font-family);
+    top:20%;
+    height: 2rem;
+    font-size: 2rem;
+    line-height: 2rem;
+    vertical-align: center;
+    /*animation: text-up ease-in 0.7s;*/
+}
+.introduce-main-Text{
+    top: 35%;
+    height: 4rem;
+    font-size: 4rem;
+    line-height: 4rem;
+    /*animation: text-up ease-in 0.7s;*/
+}
+.introduce-sub-text{
+    width: 60%;
+    top:60%;
+    left:20%;
+    height: 3rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    
+    /*animation: text-up ease-in 0.7s;*/
+}
+.active :is(.introduce-first-Text, .introduce-main-Text, .introduce-sub-text)
+{
+    animation: text-up ease-in 0.7s;
+}
+/*Animation*/
+@keyframes text-up{
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

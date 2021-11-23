@@ -1,0 +1,102 @@
+#top-review{
+    width: 100%;
+    height: 50vh;
+    background-image: url(https://i.pinimg.com/originals/7b/c4/a3/7bc4a38a34b629ea5cea172f30274a4e.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: relative;
+}
+#top-review-content{
+    color: var(--white-text-color);
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 10%;
+}
+#top-review-title{
+    width: 100%;
+    height: 3.5rem;
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    top:10%;
+    text-align: center;
+    padding: 0 0.5rem;
+}
+#top-review-subtitle{
+    width: 60%;
+    height: 3rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    margin-left:20%;
+    text-align: center;
+}
+.top-review-slider-wrapper{
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 40%;
+    overflow:hidden;
+}
+.top-review-slider-main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.top-review-slider-item{
+    height: 100%;
+    background-color: var(--white-background-color);
+    box-shadow: 0 0 5px rgba(0,0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-right: 2.5%;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 22.5%;
+}
+.top-review-imgAuthor > img{
+    height: 85px;
+    width: 85px;
+    /*Thành hình tròn*/
+    border-radius: 100%;
+    margin: 0 5px;
+}
+.top-review-comment>div{
+    margin-bottom: 5px;
+}
+.top-review-slider-dots{
+    color:white;
+    /*color: var(--grey-dot-color);*/
+    position: absolute;
+    left:50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+}
+.top-review-slider-dot-item{
+    padding-right: 5px;
+    cursor: pointer;
+}
+/*Xử lý animation*/
+.top-review-slider-main.active-in-top-review{
+    transition: transform 2s;
+}
+.top-review-slider-dot-item.active-in-top-review{
+    color:var(--primary-color);
+}
+@media only screen and (max-width: 1000px){
+    .top-review-slider-item{
+        flex-basis: 47.5%;
+    }
+}
+@media only screen and (max-height: 1000px){
+    .top-review-slider-item{
+        
+    }
+}
