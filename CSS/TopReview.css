@@ -64,9 +64,39 @@
     border-radius: 100%;
     margin: 0 5px;
 }
-.top-review-comment>div{
-    margin-bottom: 5px;
+.top-review-comment{
+    margin-right: 5px;
 }
+.top-review-comment>div{
+    margin-bottom: 10px;
+}
+.stars-container {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    font-size:20px;
+  }
+  
+  .stars-container:before {
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    color: lightgray;
+    font-size:20px;
+  }
+  
+  .stars-container:after {
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    color: gold;
+    overflow: hidden;
+    font-size:20px;
+  }
 .top-review-slider-dots{
     color:white;
     /*color: var(--grey-dot-color);*/

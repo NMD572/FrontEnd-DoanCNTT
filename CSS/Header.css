@@ -1,12 +1,15 @@
+
 #divHeader{
     width: 100%;
-    border: black solid 3px;
-    height: 80px;
+    position:fixed;
+    top:0; left:0; right:0;
+    height: var(--fixed-header-height);
     display: flex;
     align-items: center;
     justify-content: left;
     background-color: var(--white-background-color);
-    z-index: 20;
+    z-index: 1000;
+    box-shadow: 0 0 5px rgba(0,0, 0, 0.3);
 }
 .formatPosition{
     position:relative;

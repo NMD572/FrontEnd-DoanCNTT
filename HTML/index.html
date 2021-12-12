@@ -4,6 +4,20 @@
         <title>Homepage</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/JavaScript/LoadTourAPI.js"></script>
+        <script src="/JavaScript/LoadReviewAPI.js"></script>
+        <script src="/JavaScript/LoadTourguideAPI.js"></script>
+        <script src="/JavaScript/LoadInfoMyShopAPI.js"></script>
+        <script src="/JavaScript/Slide.js"></script>
+        <script src="/JavaScript/TopReview.js"></script>
+        <!--<script src="/JavaScript/TopTourguide.js"></script>-->
+
+        <script src="/JavaScript/AddToCartAPI.js"></script>
+
+        <!--<script src="/JavaScript/test.js"></script>-->
+
         <link href="/CSS/Base.css" rel="stylesheet">
         <link href="/CSS/Header.css" rel="stylesheet">
         <link href="/CSS/GridTravel.css" rel="stylesheet">
@@ -11,14 +25,17 @@
         <link href="/CSS/Slider.css" rel="stylesheet">
         <link href="/CSS/TopReview.css" rel="stylesheet">
         <link href="/CSS/TopTourguide.css" rel="stylesheet">
-
-        <script src="/JavaScript/Slide.js"></script>
-        <script src="/JavaScript/TopReview.js"></script>
-        <script src="/JavaScript/TopTourguide.js"></script>
-
+        
         <script src="https://kit.fontawesome.com/59bf0708f6.js" crossorigin="anonymous"></script>
     </head>
     <style>
+        #headerSpace{
+            height: var(--fixed-header-height);
+            display: block !important;
+        }
+        #header{
+            position:relative;
+        }
         #GridTravel{
             margin: 30px 0;
         }
@@ -39,6 +56,7 @@
         }
     </style>
     <body>
+        <div id="headerSpace"></div>
         <div id="header">
             <div id="divHeader">
                 <div id="divLogo" class="formatPosition">
@@ -46,13 +64,13 @@
                 </div>
                 <div id="listNavBar" class="formatPosition">
                     <ul>
-                        <li><a href=""><b>Home</b></a></li>
-                        <li><a href=""><b>Pages</b></a></li>
-                        <li><a href=""><b>Destination</b></a></li>
-                        <li><a href=""><b>Tours</b></a></li>
-                        <li><a href=""><b>Blog</b></a></li>
-                        <li><a href=""><b>Shop</b></a></li>
-                        <li><a href=""><b>Elements</b></a></li>
+                        <li><a href="#headerSpace"><b>Home</b></a></li>
+                        <li><a href="#GridTravel"><b>Tours</b></a></li>
+                        <li><a href="#IntroductionVideo"><b>Video</b></a></li>
+                        <li><a href="#TopReview"><b>Reviews</b></a></li>
+                        <li><a href="#TopTourguide"><b>Tourguide</b></a></li>
+                        <li><a href="#Nationalresorts"><b>Destination</b></a></li>
+                        <li><a href="#footer"><b>Shop</b></a></li>
                     </ul>
                 </div>
                 <div id="listCart" class="formatPosition">
@@ -191,7 +209,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 1</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -202,7 +220,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 2</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -213,7 +231,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 3</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -224,7 +242,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 4</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -235,7 +253,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 5</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -246,7 +264,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 6</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -257,7 +275,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 7</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -268,7 +286,7 @@
                             </div>
                             <div class="top-review-comment">
                                 <div class="top-review-tourist-attraction"><b>tourist attraction 8</b></div>
-                                <div class="top-review-comment-star">Số sao: 5</div>
+                                <div class="top-review-comment-star"></div>
                                 <div class="top-review-comment-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
                                 <div class="top-review-comment-author"><b>Ema Cooper</b></div>
                             </div>
@@ -286,45 +304,49 @@
                 <div class="infoGrid" id="infoTourguide">
                     <div class="infoGridItem">
                         <img src="https://intrepidexpeditions.com/wp-content/uploads/2018/03/polenakis_bio.jpg" alt="Tourguide">
-                        <div class="infoTourguide ">
-                            <div><b>Polenakis</b></div> 
-                            <div>An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
-                            <div>
-                                <a><i class="fab fa-facebook-f"></i></a>
-                                <a><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="infoGridItem">
-                        <img src="https://intrepidexpeditions.com/wp-content/uploads/2018/03/polenakis_bio.jpg" alt="Tourguide">
                         <div class="infoTourguide">
-                            <div><b>Polenakis</b></div> 
-                            <div>An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
-                            <div>
-                                <a><i class="fab fa-facebook-f"></i></a>
-                                <a><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="infoGridItem">
-                        <img src="https://intrepidexpeditions.com/wp-content/uploads/2018/03/polenakis_bio.jpg" alt="Tourguide">
-                        <div class="infoTourguide">
-                            <div><b>Polenakis</b></div> 
-                            <div>An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
-                            <div>
-                                <a><i class="fab fa-facebook-f"></i></a>
-                                <a><i class="fab fa-instagram"></i></a>
+                            <div class="tourguideName"><b>Polenakis</b></div>
+                            <div class="qualityTourguide"></div>
+                            <div class="tourguideBrief">An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
+                            <div class="tourguideLink">
+                                <a class="tourguideLinkFace"><i class="fab fa-facebook-f"></i></a>
+                                <a class="tourguideLinkInsta"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="infoGridItem">
                         <img src="https://intrepidexpeditions.com/wp-content/uploads/2018/03/polenakis_bio.jpg" alt="Tourguide">
                         <div class="infoTourguide ">
-                            <div><b>Polenakis</b></div> 
-                            <div>An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
-                            <div>
-                                <a><i class="fab fa-facebook-f"></i></a>
-                                <a><i class="fab fa-instagram"></i></a>
+                            <div class="tourguideName"><b>Polenakis</b></div> 
+                            <div class="qualityTourguide"></div>
+                            <div class="tourguideBrief">An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
+                            <div class="tourguideLink">
+                                <a class="tourguideLinkFace"><i class="fab fa-facebook-f"></i></a>
+                                <a class="tourguideLinkInsta"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoGridItem">
+                        <img src="https://intrepidexpeditions.com/wp-content/uploads/2018/03/polenakis_bio.jpg" alt="Tourguide">
+                        <div class="infoTourguide ">
+                            <div class="tourguideName"><b>Polenakis</b></div> 
+                            <div class="qualityTourguide"></div>
+                            <div class="tourguideBrief">An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
+                            <div class="tourguideLink">
+                                <a class="tourguideLinkFace"><i class="fab fa-facebook-f"></i></a>
+                                <a class="tourguideLinkInsta"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infoGridItem">
+                        <img src="https://intrepidexpeditions.com/wp-content/uploads/2018/03/polenakis_bio.jpg" alt="Tourguide">
+                        <div class="infoTourguide ">                        
+                            <div class="tourguideName"><b>Polenakis</b></div> 
+                            <div class="qualityTourguide"></div>
+                            <div class="tourguideBrief">An independent guide for Africa Adventure Company, was born in Zimbabwe and is specially trained to lead walking safaris.</div> 
+                            <div class="tourguideLink">
+                                <a class="tourguideLinkFace"><i class="fab fa-facebook-f"></i></a>
+                                <a class="tourguideLinkInsta"><i class="fab fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>

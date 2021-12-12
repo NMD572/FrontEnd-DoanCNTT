@@ -23,6 +23,33 @@
     position: relative;
     overflow: hidden;
 }
+.stars-tourguide-container {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    font-size:20px;
+  }
+  
+  .stars-tourguide-container:before {
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    color: var(--white-background-color);
+    font-size:20px;
+  }
+  
+  .stars-tourguide-container:after {
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    color: gold;
+    overflow: hidden;
+    font-size:20px;
+  }
 .infoGridItem > img{
     height: 100%;
     width: 100%;
@@ -39,6 +66,7 @@
 .infoTourguide>div>a{
     cursor: pointer;
     margin-right: 10px;
+    color:var(--white-text-color);
 }
 .infoGridItem>img:hover+.infoTourguide,.infoTourguide:hover{
     font-size:1.2rem;

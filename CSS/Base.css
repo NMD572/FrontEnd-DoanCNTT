@@ -6,6 +6,8 @@
 html{
     font-family:  'Roboto', sans-serif;
     font-size: 16px;
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
 }
 :root{
     --primary-color:#3fd0d4;
@@ -15,4 +17,5 @@ html{
     --primary-font-family: 'Roboto', sans-serif;
     --special-font-family: Satisfy,cursive;
     --grey-dot-color: rgba(0,0,0,0.3);
+    --fixed-header-height: 80px;
 }

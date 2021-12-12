@@ -1,3 +1,4 @@
+/*
 function animateNumber(finalNumber, duration = 5000, startNumber = 0, callback) {
   console.log(1);
     let currentNumber = startNumber
@@ -17,7 +18,7 @@ function animateNumber(finalNumber, duration = 5000, startNumber = 0, callback) 
       }
     }
   }
-  
+
   document.addEventListener('DOMContentLoaded', function () {
     const infoDatas = document.querySelectorAll(".infoData");
     let duration=3000;
@@ -40,3 +41,4 @@ function animateNumber(finalNumber, duration = 5000, startNumber = 0, callback) 
         infoDatas[3].innerText = formattedNumber
       })
   })
+*/

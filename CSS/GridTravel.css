@@ -37,7 +37,26 @@
 .infoTravel i{
     margin-right: 5px;
 }
-
+.btn-Add-To-Cart{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 2rem;
+    background-color: var(--primary-color);
+    color:var(--white-text-color);
+    text-align: center;
+}
+.iconCartPlus{
+    height: 2rem;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 2rem !important;
+    cursor: pointer;
+    text-align: center;
+}
+.dataIdTour{
+    display: none;
+}
 .gridBigImgContainer{
     /*Theo cha .gridItem(relative)*/
     position:absolute;

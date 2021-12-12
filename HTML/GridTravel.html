@@ -4,13 +4,19 @@
         <title></title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/JavaScript/LoadTourAPI.js"></script>
+        <script src="/JavaScript/test.js"></script>
+        <script src="/JavaScript/AddToCartAPI.js"></script>
+
         <link href="/CSS/Base.css" rel="stylesheet">
         <link href="/CSS/GridTravel.css" rel="stylesheet">
+
         <script src="https://kit.fontawesome.com/59bf0708f6.js" crossorigin="anonymous"></script>
     </head>
     <body>
     <div class="layoutGrid" id="divGrid">
-        <div class="gridItem">
+        <div class="gridItem ">
             <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
             <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
             <div class="infoTravel">
@@ -21,8 +27,12 @@
             <div class="infoTravelText">
                 <b><h3>Title</h3></b>
                 <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
+                <b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
+                <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b>
+            </div>
+            <div class="btn-Add-To-Cart">
+                <i class="fas fa-cart-plus iconCartPlus" data-index="0">  Add to Cart</i>
+                <div class="dataIdTour">0</div>
             </div>
         </div>
         <div class="gridItem">
@@ -39,6 +49,10 @@
                 <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
                 <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
             </div>
+            <div class="btn-Add-To-Cart" >
+                <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
+                <div class="dataIdTour">1</div>
+            </div>
         </div>
         <div class="gridItem">
             <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
@@ -53,6 +67,10 @@
                 <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
                 <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
                 <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
+            </div>
+            <div class="btn-Add-To-Cart" >
+                <i class="fas fa-cart-plus iconCartPlus" data-index="2">  Add to Cart</i>
+                <div class="dataIdTour">2</div>
             </div>
         </div>
         <div class="gridItem">
@@ -68,6 +86,10 @@
                 <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
                 <b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
                 <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b>
+            </div>           
+            <div class="btn-Add-To-Cart" >
+                <i class="fas fa-cart-plus iconCartPlus" data-index="3">  Add to Cart</i>
+                <div class="dataIdTour">3</div>
             </div>
         </div>
         <div class="gridItem">
@@ -83,6 +105,10 @@
                 <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
                 <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
                 <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
+            </div>
+            <div class="btn-Add-To-Cart">
+                <i class="fas fa-cart-plus iconCartPlus" data-index="4">  Add to Cart</i>
+                <div class="dataIdTour">4</div>
             </div>
         </div>
     </div>
