@@ -25,14 +25,10 @@ $('.top-review-slider-main').ready(function() {
 function showTopReview(response)
 {
     let contentTopReview=response.content;
-    let size=0;
-    if(contentTopReview.length>8)
+    let size=contentTopReview.length;
+    if(size>8)
     {
         size=8;
-    }
-    else
-    {
-        size=contentTopReview.length;
     }
     const authorImgs = document.querySelectorAll(".top-review-imgAuthor>img");
     const reviewQualityStar = document.querySelectorAll(".top-review-comment-star");

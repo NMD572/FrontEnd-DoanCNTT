@@ -10,9 +10,11 @@
         <script src="/JavaScript/LoadReviewAPI.js"></script>
         <script src="/JavaScript/LoadTourguideAPI.js"></script>
         <script src="/JavaScript/LoadInfoMyShopAPI.js"></script>
+        <script src="/JavaScript/LoadCountryAPI.js"></script>
         <script src="/JavaScript/Slide.js"></script>
         <script src="/JavaScript/TopReview.js"></script>
-        <!--<script src="/JavaScript/TopTourguide.js"></script>-->
+        <script src="/JavaScript/Header.js"></script>
+        <!-- <script src="/JavaScript/TopTourguide.js"></script> -->
 
         <script src="/JavaScript/AddToCartAPI.js"></script>
 
@@ -26,7 +28,9 @@
         <link href="/CSS/TopReview.css" rel="stylesheet">
         <link href="/CSS/TopTourguide.css" rel="stylesheet">
         
-        <script src="https://kit.fontawesome.com/59bf0708f6.js" crossorigin="anonymous"></script>
+        <!--font awesome-->
+        <script src="https://kit.fontawesome.com/a6d322e01c.js" crossorigin="anonymous"></script>
+        <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
     </head>
     <style>
         #headerSpace{
@@ -60,7 +64,7 @@
         <div id="header">
             <div id="divHeader">
                 <div id="divLogo" class="formatPosition">
-                    <div><img src="https://photo2.tinhte.vn/data/attachment-files/2018/04/4282714_9PShuk4.jpg" alt=""></div>
+                    <div><a href="/HTML/index.html"><img src="/Image/logo.png" alt=""></a></div>
                 </div>
                 <div id="listNavBar" class="formatPosition">
                     <ul>
@@ -76,7 +80,16 @@
                 <div id="listCart" class="formatPosition">
                     <div><i class="fas fa-shopping-cart iconCart"></i></div>
                     <div><i class="fas fa-search-plus iconCart"></i></div>
-                    <div><i class="fas fa-info iconCart"></i></div>
+                    <div id="divUser" onclick="openNav()">
+                        <i class="fas fa-user iconUser"></i>
+                        <i class="fas fa-sort-down iconUser"></i>
+                        <ul id="nav">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Bill</a></li>
+                            <li><a href="#">Log out</a></li>
+                        </ul>
+                    </div>
+                        
                 </div>
             </div>
         </div>
@@ -384,5 +397,11 @@
         </div>
         <footer id="footer">
         </footer>
+        <script id="nation-template" type="text/x-handlebars-template">
+            <div class="nationalResortItem">
+                <a href={{link}}><img src={{image}} alt=""></a>
+                <div>{{name}}</div>
+            </div>
+          </script>
     </body>
 </html>
