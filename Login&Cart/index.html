@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login popup box</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <meta name="google-signin-client_id" content="552028656930-v0kr541qgbv29pcd47e76vrcrnr6dcap.apps.googleusercontent.com">
+  
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="text/javascript">
+(function() {
+emailjs.init("user_bboVfPjrrnxFUHlg1eFiG");
+})();
+</script> 
+</head>
+<body onload="getcookiedata()">
+
+  <div class="main-popup">
+  	 <div class="box">
+  	 	 <div class="img-area">
+  	 	 	<div class="img">
+  	 	 	</div>
+  	 	 	<h1>TRAVELEZ</h1>
+  	 	 </div>
+  	 	 <div class="form">
+  	 	 	<div class="close">&times;</div>
+  	 	 	<h1>Log In</h1>
+  	 	 	<form>
+  	 	 		<div class="form-group">
+  	 	 			<input type="text" placeholder="Email" class="form-control" name ="email" id ="email">
+  	 	 		</div>
+  	 	 		<div class="form-group">
+  	 	 			<input type="password" placeholder="Password" class="form-control" name ="password" id ="password">
+  	 	 		</div>
+  	 	 		<div class="form-group">
+  	 	 			<label><input type="checkbox" id ="remember-me">
+  	 	 				Remember Me
+  	 	 			</label>
+
+  	 	 		</div>
+  	 	 		<button type="button" class="btn" id ="buttonlogin">Log In</button>
+            <br> <br>
+					<div class="g-signin2" data-onsuccess="onSignIn"></div> 
+          <br>
+          <a href="register.html" target="_blank" class ="inputloginc" >Click here to Register</a>  <br>
+          <form method="post">
+            <input type="button"  class="btn" value="Forgot Password? Click here" style="width: 280px; margin-top: 10px;" onclick="sendEmail()"/>
+          </form>  
+					<script src="https://apis.google.com/js/platform.js" async defer></script>
+					
+					<script src="https://accounts.google.com/gsi/client" async defer></script>
+            
+  	 	 	</form>
+  	 	 </div>
+  	 </div>
+  </div>
+
+<script src="script.js"></script>
+<script type="text/javascript">
+  function sendEmail(params) {
+    var tempParams ={
+      from_name: "travelez",
+      to_name: "user",
+      message: "ma cua ban la:aavvc",
+      to_email:"nhoxkazamadepzai@gmail.com"
+    };
+	emailjs.send("service_pol96gj","template_9czj4y7",tempParams)
+  .then(function(res){
+    console.log("success",res.status);
+  })
+}
+	let email ="";
+  	let password ="";
+	$('#buttonlogin').click(function() {
+      email= document.getElementById('email').value;
+      let passwordclient=document.getElementById('password').value;
+      //check remember thi moi luu
+      var check = document.getElementById('remember-me');
+         if(check.checked){
+        	 setcookie();
+         }
+         $.ajax({
+         url: 'http://localhost:8080/api/users/get/' +email,
+         type: 'GET',
+         contentType: 'application/json',
+         dataType: 'JSON',
+         success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+             if(response.password == passwordclient)
+             {
+             alert("dang nhap thanh cong");
+             sessionStorage.setItem("idUser",response.id);
+             window.location.assign("./HomePage/FrontEnd-DoanCNTT/HTML/index.html");
+             console.log(sessionStorage.getItem("idUser"));
+
+             }
+             else alert("sai password");
+             
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+            alert("khong ton tai email");
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+           
+         }
+     })
+    
+})
+function createDivGridTravel(response){
+    const itemContainer=document.getElementById("test");
+    const contentTour=response.email;
+    console.log(contentTour);
+}
+function makeid(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+              result += characters.charAt(Math.floor(Math.random() * 
+         charactersLength));
+           }
+           return result;
+        }
+function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        
+    	
+        let fullname =profile.getName();
+        let email =profile.getEmail().toString();
+        let image =profile.getImageUrl();
+        let password=makeid(15).toString();
+        //add user
+       
+     //kiem tra xem co tk chua
+     $.ajax({
+         url: 'http://localhost:8080/api/users/get/' +email,
+         type: 'GET',
+         contentType: 'application/json',
+         dataType: 'JSON',
+         success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+             window.location.assign("./HomePage/FrontEnd-DoanCNTT/HTML/index.html");
+             sessionStorage.setItem("idUser",response.id);
+             
+             
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+            console.log("chua co trong data");
+            var formData = {fullname, password,email,image};
+                $.ajax({
+                    url: 'http://localhost:8080/api/users',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    dataType: 'JSON',
+                    success: 
+                    function (response) 
+                    {
+                        console.log("Venue Successfully Patched!");
+                        console.log(response);
+                        sessionStorage.setItem("idUser",response.id);
+                        //$("#table-data tr").remove(); 
+                        //createDivGridTravel(response);
+                        
+                        alert("insert thanh cong")
+                        window.location.assign("./HomePage/FrontEnd-DoanCNTT/HTML/index.html");
+                        
+                    }
+                    ,
+                    error: function (jqXHR) {
+                        // log the error to the console
+                       // console.log("The following error occured: " + textStatus, errorThrown);
+                        alert("insert that bai")
+                    },
+                    complete: function () {
+                        console.log("Venue Patch Ran");
+                    
+                    }
+                })
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+           
+         }
+     })
+
+    
+      
+        if((profile.getId())!=null)
+        	signOut();
+        alert("You have been signed in successfully");
+        	//window.location.assign('addUserGoogle.tiles')
+    }
+    function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+            
+        });
+    }
+    //setcookie
+    function setcookie(){
+        var u =document.getElementById('email').value;
+        var p =document.getElementById('password').value;
+	//set host
+        document.cookie="myusrname="+u+";path=http://localhost:5500/index.html";
+        document.cookie="mypswd="+p+";path=http://localhost:5500/index.html";
+       }
+    function getcookiedata(){
+        console.log(document.cookie);
+        var user=getCookie('myusrname');
+        var pswd=getCookie('mypswd');
+        document.getElementById('email').value=user;
+        document.getElementById('password').value=pswd;
+        //var check = document.getElementById('remember-me');
+        //console.log(check.checked);
+       }
+//lay ra cookie
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+   }
+   
+   
+</script>
+</body>
+</html>

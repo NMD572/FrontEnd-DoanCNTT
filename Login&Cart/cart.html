@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Cart</title>
+    <link rel="stylesheet" href="styleCart.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script src="cartLoad.js"></script>
+    
+    <script src="https://kit.fontawesome.com/59bf0708f6.js" crossorigin="anonymous"></script>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="CartAPi.js"></script>
+    <script src="https://peterolson.github.io/BigInteger.js/BigInteger.min.js"></script>
+</head>
+<style>
+    #aa{
+  display: none;
+}
+</style>
+<body onload="test()">
+    
+    <div class="container pb-5 mb-2"> <!--Class lớn của tất cả class-->
+        <!-- Alert--> <!--Class check for all-->
+        <div class="alert alert-info alert-dismissible fade show text-center mb-30"><span class="alert-close" data-dismiss="alert"></span><i class="fe-icon-award"></i>&nbsp;&nbsp;Choose the tour you want to pay for</div>
+        <div class="container_swab p-1 bg-info text-white" style="margin-bottom: 20px; border-radius: 6px; border: 1px solid lightblue;">
+            <input type="checkbox" name="checkbox" id="checkall" onchange="sumall()"/>
+            <span style="margin-left: 10px;"><strong>Check for all</strong></span>
+        </div>
+
+        <!-- Cart Item-->
+        <div class="layoutCart" id="divCart" style="border:0px" display="none">
+            <div class="grid cart-item d-md-flex justify-content-between" id="aa" style="height:150px">
+                <div class="removeCart">
+                    <div class="divRemove remove-item fa fa-times" data-index="0" onclick="remove(this)"></div>
+                    <div class="dataIdRemove">0</div>
+                </div>
+                
+                    <div class="checkBoxCart">
+                        <div class="divCheckbox">
+                            <input class="iCheckbox" type="checkbox" data-index="0" onchange="calc(this)" value="1000"/>
+                        </div>
+                        <div class="dataIdCart">0</div>
+                    </div>
+                    <div class="infoGrid px-3 my-3"> <!--này là cái hình rùi cái div kế bên-->
+                        <div class="cartProduce cart-item-product">
+                            <div class="gridImgContainer cart-item-product-thumb">
+                                <img class="gridImg" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                            </div>
+                            <div class="gridCartContainer cart-item-product-info">
+                                <div class="divName">
+                                    <h4 class="nameCart cart-item-product-title">Vịnh Hạ Long</h4>
+                                </div>
+                                <div class="divBrief">
+                                    <span><strong>Brief:</strong> Tỉnh Quảng Ninh</span>
+                                </div>
+                                <div class="divCountry">
+                                    <span><strong>Country:</strong> Việt Nam</span>
+                                </div>
+                                <div class="divQuality">                       
+                                    <strong>Quality: </strong>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                
+                    <div class="divGuide px-3 my-3 text-center">
+                        <div class="cart-item-label">Guide ID</div>
+                        <div>
+                        <span class="text-xl font-weight-medium">1</span>
+                        </div>
+                    </div>
+                    <div class="divMember px-3 my-3 text-center">
+                        <div class="cart-item-label">Max member</div>
+                        <div>
+                            <span class="text-xl font-weight-medium">100</span>
+                        </div>
+                    </div>
+                    <div class="divPrice px-3 my-3 text-center">
+                        <div class="cart-item-label">Price</div>
+                        <div>
+                            <span class="text-xl font-weight-medium">10.000.000 vnd</span>
+                        </div>
+                    </div>
+                    <div class="divTime px-3 my-3 text-center">
+                        <div class="cart-item-label">Time</div>
+                        <div>
+                            <span class="text-xl font-weight-medium">00:00:00</span>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!-- Cart Item-->
+
+        <!--Subtotal-->
+        <div class="px-3 my-3 text-right">
+            <p>Subtotal: $<span id="total">0</span></p>
+        </div>
+            <div class ="digRSA">
+                <span class="text-xl font-weight-medium">  Vui lòng chọn chữ ký để xác thực thông tin thanh toán</span> 
+                <br>
+              
+            <input type="file" name="" id="fileId" 
+            onchange="imageUploaded()">
+        <br><br>
+            </div>
+        <!-- Buttons-->
+        <hr class="my-2">
+        <div class="row pt-3 pb-5 mb-2">
+            <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-secondary btn-block" onclick="CheckDigitalSignature()" href="#" ><i class="fe-icon-refresh-ccw"></i>&nbsp;Check Digital Signature</a></div>
+            <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-primary btn-block" href="#" onclick="checkout()"><i class="fe-icon-credit-card"></i>&nbsp;Checkout</a></div>
+        </div>
+    
+           
+        </div>
+    </div>
+</body>
+<script>
+    var checkDS = false;
+    var checkfile = false;
+    var checkupdate = false;
+    var sha1_hash;
+    var sha2_hash;
+    var encry;
+    var d;
+    var n ;
+function RSADG(message){
+    var p ;
+    var q ;
+    var flagprime =false;
+    do {
+        p = bigInt(makeid(39));
+        q = bigInt(makeid(39));
+        if(bigInt(p).isPrime() && bigInt(q).isPrime())
+        flagprime=true;
+       
+    } while (!flagprime);
+    console.log("\np:"+p.value);
+    console.log("\nq:"+q.value);
+    console.log("\nmes:"+message.value);
+    // a + b
+    n = bigInt(p).multiply(q); // tinh n
+    console.log("\nn:"+n.value);
+    temp1= (bigInt(p).subtract(bigInt(1))); // tinh p -1
+    temp2= (bigInt(q).subtract(bigInt(1))); //tinh q -1
+    phi = bigInt(temp1).multiply(temp2); // phi = (p-1)(q-1)
+    var e2;
+    console.log("\nphi:"+phi.value);
+    var test; 
+var found = false;
+    do { //random e cho tới khi tìm được giá trị e phù hợp
+        test = makeid(39);
+        e2= bigInt(test);
+        console.log("e:"+e2.value)
+        var l =bigInt.gcd(phi,e2);
+        
+        if (bigInt.gcd(phi,e2)==1 && bigInt(e2).compare(phi) <0 ) {
+            console.log("\n bang 1");
+            found = true;
+       }
+    } while (!found);
+    //var e="272522961963542910263816516668716615341"
+    d =bigInt(e2).modInv(phi);
+    console.log("\n d:"+d.value);       
+    console.log("\n ket qua phien ma:"+bigInt(message).modPow(e2,n).value);
+    encry = bigInt(message).modPow(e2,n);
+    console.log("\n ket qua phien ma:"+encry.value);
+    console.log("\n ket qua dich:"+bigInt(encry).modPow(d,n).value);
+    var decry = bigInt(encry).modPow(d,n);
+    console.log("\n ket qua dich ma:"+decry.value);
+    
+    
+
+   // var c ="325348413603319172508514266871429713871";
+   
+}
+let base64String = "";
+function makeid(length) {
+var result           = '';
+var characters       = '0123456789';
+var charactersfirst       = '123456789';
+var charactersfirstLength = characters.length;
+var charactersLength = characters.length;
+for ( var i = 0; i < length; i++ ) {
+    if(i==0){
+        result += charactersfirst.charAt(Math.floor(Math.random() * charactersfirstLength));
+    }
+    else result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+}
+return result;
+}
+function encrypt(message,d,n){
+  return bigInt(message).modPow(d,n);
+}
+function decrypt(message,e,n){
+  return bigInt(message).modPow(e,n);
+}
+function imageUploaded() {
+  var file = document.querySelector(
+      'input[type=file]')['files'][0];
+
+  var reader = new FileReader();
+  console.log("next");
+    
+  reader.onload = function () {
+      base64String = reader.result.replace("data:", "")
+          .replace(/^.+,/, "");
+
+      imageBase64Stringsep = base64String;
+        
+       alert(imageBase64Stringsep);
+     console.log(base64String);
+       sha1_hash = SHA1(base64String); //calculate SHA1 hash
+      
+      console.log("hash lan 1:"+sha1_hash );
+     // console.log(parseInt(sha1_hash, 10));
+      sha2_hash = SHA1(sha1_hash); //calculate SHA1 hash
+     console.log("hash lan 2:"+sha2_hash );
+     console.log(sha2_hash.length );
+     checkfile =true;
+     
+     console.log(ConvertFromHexadecimalToDecimal(sha2_hash).value +"" );
+    // var a= (sha2_hash.charAt(39-1));
+    // console.log(a);
+     // var b = 323664428014828547642233789083405143023;
+  }
+  reader.readAsDataURL(file);
+
+}
+//check chu ky
+function CheckDigitalSignature(){
+    var check = 0;
+  var input3;
+  if(checkfile==true){ // xac thuc thong tin chu ky
+var message = bigInt(ConvertFromHexadecimalToDecimal(sha2_hash)) ;
+    RSADG(message);
+
+    var input = sha1_hash;
+  console.log(input);
+  var input2 = encry.value+"";
+  console.log(input2.length);
+  input3 = input + input2;
+  console.log(input3);
+  console.log(input3.length);
+  check = 1;
+  updatePublicKey(d,n,input3);
+  }
+  else alert("Bạn chưa chọn chữ ký!!");
+ 
+}
+//thanh toan don hang
+function checkout() {
+    if(checkDS ==false){
+        alert("Bạn chưa chứng thực chữ ký!!")
+    }
+    else {
+    let status ="wait";
+        console.log(listcartcheckOut);
+        for(var i=0;i<listcartcheckOut.length;i++){
+            updateStatus(listcartcheckOut[i],status);
+        }
+    }
+  
+}
+function updatePublicKey(ev,nv,input){
+    let id = 1807;
+    let etemp = bigInt(ev);
+    let ntemp = bigInt(nv);
+    let e = etemp.value +"";
+    let n =ntemp.value +"";
+    var formData = {e,n };
+
+       
+    $.ajax({
+     url: 'http://localhost:8080/api/publickey/' +id,
+     type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            dataType: 'JSON',
+            success: 
+     function (response) 
+     {
+         console.log("Venue Successfully Patched!");
+         //console.log(response);
+       
+         console.log("cap nhat khoa thanh cong");
+         sendDigitalSignature(input);
+
+     }
+     ,
+     error: function (jqXHR) {
+         // log the error to the console
+        // console.log("The following error occured: " + textStatus, errorThrown);
+
+        console.log("cap nhat khoa that bai");
+
+     },
+     complete: function () {
+         console.log("Venue Patch Ran");
+         
+   
+       
+     }
+ })
+   
+ }
+ function updateStatus(id,status){
+       
+        
+       var formData = {status };
+   
+          
+       $.ajax({
+        url: 'http://localhost:8080/api/cart/' +id,
+        type: 'PUT',
+               contentType: 'application/json',
+               data: JSON.stringify(formData),
+               dataType: 'JSON',
+               success: 
+        function (response) 
+        {
+            console.log("Venue Successfully Patched!");
+            console.log(response);
+          
+            console.log("cap nhat status");
+            updateCash("9",450,response.tourincart.name);
+
+        }
+        ,
+        error: function (jqXHR) {
+            // log the error to the console
+           // console.log("The following error occured: " + textStatus, errorThrown);
+
+           console.log("cap nhat status that bai");
+
+        },
+        complete: function () {
+            console.log("Venue Patch Ran");
+            
+      
+          
+        }
+    })
+      
+    }
+    function updateCash(id,cash,nameTour){
+      
+       var formData = {cash };
+   
+          
+       $.ajax({
+        url: 'http://localhost:8080/api/users/cash/' +id,
+        type: 'PUT',
+               contentType: 'application/json',
+               data: JSON.stringify(formData),
+               dataType: 'JSON',
+               success: 
+        function (response) 
+        {
+            console.log("Venue Successfully Patched!");
+            console.log(response);
+          
+            console.log("cap nhat tien thanh cong");
+            alert(" Chúc mừng bạn thanh toán thành công chuyến đi: " +nameTour+ "\n Chúc quý khách du lịch vui vẻ!!")
+            
+
+        }
+        ,
+        error: function (jqXHR) {
+            // log the error to the console
+           // console.log("The following error occured: " + textStatus, errorThrown);
+
+           console.log("cap nhat tien that bai");
+
+        },
+        complete: function () {
+            console.log("Venue Patch Ran");
+            
+      
+          
+        }
+    })
+      
+    }
+ function sendDigitalSignature(input){
+    console.log(input);
+       
+    $.ajax({
+     url: 'http://localhost:8080/api/publickey/get/' +input,
+     type: 'GET',
+     contentType: 'application/json',
+     dataType: 'JSON',
+     success:
+     function (response) 
+     {
+       // console.log(response);
+        console.log("ket noi thanhcong");
+        checkDS =true;
+        alert("Chúc mừng bạn chứng thực chữ ký số thành công! Chữ ký toàn vẹn!!");
+        
+
+
+     }
+     ,
+     error: function (jqXHR) {
+         // log the error to the console
+        // console.log("The following error occured: " + textStatus, errorThrown);
+        console.log("ket noi that bai");
+
+     },
+     complete: function () {
+        console.log("Venue Patch Ran");
+         
+   
+       
+     }
+ })
+   
+ }
+ 
+function SHA1(msg) {
+function rotate_left(n,s) {
+var t4 = ( n<<s ) | (n>>>(32-s));
+return t4;
+};
+function lsb_hex(val) {
+var str='';
+var i;
+var vh;
+var vl;
+for( i=0; i<=6; i+=2 ) {
+vh = (val>>>(i*4+4))&0x0f;
+vl = (val>>>(i*4))&0x0f;
+str += vh.toString(16) + vl.toString(16);
+}
+return str;
+};
+function cvt_hex(val) {
+var str='';
+var i;
+var v;
+for( i=7; i>=0; i-- ) {
+v = (val>>>(i*4))&0x0f;
+str += v.toString(16);
+}
+return str;
+};
+function Utf8Encode(string) {
+string = string.replace(/\r\n/g,'\n');
+var utftext = '';
+for (var n = 0; n < string.length; n++) {
+var c = string.charCodeAt(n);
+if (c < 128) {
+utftext += String.fromCharCode(c);
+}
+else if((c > 127) && (c < 2048)) {
+utftext += String.fromCharCode((c >> 6) | 192);
+utftext += String.fromCharCode((c & 63) | 128);
+}
+else {
+utftext += String.fromCharCode((c >> 12) | 224);
+utftext += String.fromCharCode(((c >> 6) & 63) | 128);
+utftext += String.fromCharCode((c & 63) | 128);
+}
+}
+return utftext;
+};
+var blockstart;
+var i, j;
+var W = new Array(80);
+var H0 = 0x67452301;
+var H1 = 0xEFCDAB89;
+var H2 = 0x98BADCFE;
+var H3 = 0x10325476;
+var H4 = 0xC3D2E1F0;
+var A, B, C, D, E;
+var temp;
+msg = Utf8Encode(msg);
+var msg_len = msg.length;
+var word_array = new Array();
+for( i=0; i<msg_len-3; i+=4 ) {
+j = msg.charCodeAt(i)<<24 | msg.charCodeAt(i+1)<<16 |
+msg.charCodeAt(i+2)<<8 | msg.charCodeAt(i+3);
+word_array.push( j );
+}
+switch( msg_len % 4 ) {
+case 0:
+i = 0x080000000;
+break;
+case 1:
+i = msg.charCodeAt(msg_len-1)<<24 | 0x0800000;
+break;
+case 2:
+i = msg.charCodeAt(msg_len-2)<<24 | msg.charCodeAt(msg_len-1)<<16 | 0x08000;
+break;
+case 3:
+i = msg.charCodeAt(msg_len-3)<<24 | msg.charCodeAt(msg_len-2)<<16 | msg.charCodeAt(msg_len-1)<<8 | 0x80;
+break;
+}
+word_array.push( i );
+while( (word_array.length % 16) != 14 ) word_array.push( 0 );
+word_array.push( msg_len>>>29 );
+word_array.push( (msg_len<<3)&0x0ffffffff );
+for ( blockstart=0; blockstart<word_array.length; blockstart+=16 ) {
+for( i=0; i<16; i++ ) W[i] = word_array[blockstart+i];
+for( i=16; i<=79; i++ ) W[i] = rotate_left(W[i-3] ^ W[i-8] ^ W[i-14] ^ W[i-16], 1);
+A = H0;
+B = H1;
+C = H2;
+D = H3;
+E = H4;
+for( i= 0; i<=19; i++ ) {
+temp = (rotate_left(A,5) + ((B&C) | (~B&D)) + E + W[i] + 0x5A827999) & 0x0ffffffff;
+E = D;
+D = C;
+C = rotate_left(B,30);
+B = A;
+A = temp;
+}
+for( i=20; i<=39; i++ ) {
+temp = (rotate_left(A,5) + (B ^ C ^ D) + E + W[i] + 0x6ED9EBA1) & 0x0ffffffff;
+E = D;
+D = C;
+C = rotate_left(B,30);
+B = A;
+A = temp;
+}
+for( i=40; i<=59; i++ ) {
+temp = (rotate_left(A,5) + ((B&C) | (B&D) | (C&D)) + E + W[i] + 0x8F1BBCDC) & 0x0ffffffff;
+E = D;
+D = C;
+C = rotate_left(B,30);
+B = A;
+A = temp;
+}
+for( i=60; i<=79; i++ ) {
+temp = (rotate_left(A,5) + (B ^ C ^ D) + E + W[i] + 0xCA62C1D6) & 0x0ffffffff;
+E = D;
+D = C;
+C = rotate_left(B,30);
+B = A;
+A = temp;
+}
+H0 = (H0 + A) & 0x0ffffffff;
+H1 = (H1 + B) & 0x0ffffffff;
+H2 = (H2 + C) & 0x0ffffffff;
+H3 = (H3 + D) & 0x0ffffffff;
+H4 = (H4 + E) & 0x0ffffffff;
+}
+var temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
+
+return temp.toLowerCase();
+}
+function  ConvertFromHexadecimalToDecimal( num){
+    p = bigInt(makeid(39));
+    var a = bigInt("0");
+    var ctr = 0;
+    var prod = bigInt("0");
+    var sixteen= new bigInt("16");
+
+    for(var i=num.length; i>0; i--){
+
+        if(num.charAt(i-1)=='a'||num.charAt(i-1)=='A')
+             a = bigInt("10");
+
+        else if(num.charAt(i-1)=='b'||num.charAt(i-1)=='B')
+             a = bigInt("11");
+
+        else if(num.charAt(i-1)=='c'||num.charAt(i-1)=='C')
+             a = bigInt("12");    
+
+        else if(num.charAt(i-1)=='d'||num.charAt(i-1)=='D')
+             a = bigInt("13");
+
+        else if(num.charAt(i-1)=='e'||num.charAt(i-1)=='E')
+                a = bigInt("14");
+
+        else if(num.charAt(i-1)=='f'||num.charAt(i-1)=='F')
+                a = bigInt("15");
+
+        else
+            a= bigInt(num.charAt(i-1));
+
+        var temp1 =bigInt(sixteen).pow(ctr);
+        prod = bigInt(prod).add(bigInt(a).multiply(temp1));
+        ctr++;
+    }
+    return prod;
+}
+
+function test(){
+    
+    $("#aa").remove(); 
+   
+}
+</script>
+</html>
