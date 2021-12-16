@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit profile</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body onload="loaddata()">
+    <div class="container">
+        <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="account-settings">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img  alt="Admin" id ="image">
+                        </div>
+                        <h5 class="user-name"> <label id="fullname1"></label></h5>
+                    </div>
+                    <div class="about">
+                           <h5> <p id = "role">Admin</p> </h5>
+                    </div>
+                    <div class="center">
+                        <button type="button" id="submit" name="submit" class="btn btn-primary">Edit Password</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Personal Information</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Full name</label>
+                            <input type="email" class="form-control" id="fullname" placeholder="Enter your full name">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" class="form-control" id="phone" placeholder="Enter your phone">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <label id="emaildisplay" class="form-control" ></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mt-3 mb-2 text-primary">Cash</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <p id ="cash">
+                            100.000.000 vnd
+                        </p>
+                    </div>
+                </div>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                            <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                            <button type="submit" id="updatebutton" name="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+</body>
+<script>
+    function loaddata(){
+        //document.getElementById('user-name').innerHTML = 'haha';
+    
+
+       
+        let username ="";
+        let fullname ="";
+        let phone ="";
+        let email ="";
+        let cash =0;
+        let id =sessionStorage.getItem("idUser");
+        console.log(id);
+        let img = "";
+        let role =0;
+        $.ajax({
+         url: 'http://localhost:8080/api/users/' +id,
+         type: 'GET',
+         contentType: 'application/json',
+         dataType: 'JSON',
+         success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+             username=response.username;
+             fullname=response.fullname;
+             phone=response.phone;
+            email =response.email;
+             cash=response.cash;
+             img =response.image;
+            role = response.role;
+            console.log(fullname);
+            console.log(email);
+            console.log(img);
+
+             
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+
+          console.log("khong load dc ");
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+             $('#image').attr('src', img);
+        if(role!=null)
+        document.getElementById('role').innerHTML = 'Admin';
+        else  document.getElementById('role').innerHTML = 'User';
+
+        document.getElementById('fullname').value = fullname;
+        document.getElementById('fullname1').innerHTML = username;
+        document.getElementById('username').value = username;
+        document.getElementById('phone').value = phone;
+        document.getElementById('emaildisplay').innerHTML = email;
+        document.getElementById('cash').innerHTML = cash +"$";
+           
+         }
+     })
+     $('#updatebutton').click(function() {
+
+        updateData();
+     })
+     function updateData(){
+        let id =sessionStorage.getItem("idUser");
+        
+        console.log(id);
+        let username = document.getElementById('username').value;
+        let fullname = document.getElementById('fullname').value;
+        let phone =document.getElementById('phone').value;
+        var formData = {username, fullname,phone};
+        $.ajax({
+         url: 'http://localhost:8080/api/users/' +id,
+         type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                dataType: 'JSON',
+                success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+           
+             alert("edit thanh cong!");
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+
+             alert("edit that bai ");
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+             
+       
+           
+         }
+     })
+       
+     }
+    }
+</script>
+</html>

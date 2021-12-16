@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit tour</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body onload="loaddata()">
+    <div class="container">
+        <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="account-settings">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <img  id ="imagetour" alt="Admin">
+                        </div>
+                        <h5 class="user-name">Vịnh Hạ Long</h5>
+                    </div>
+                    <div class="about">
+                            <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Tour Information</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="username">Tour's name</label>
+                            <input type="text" class="form-control" id="tourname" placeholder="Enter tourname">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="username">Brief</label>
+                            <input type="text" class="form-control" id="brief" placeholder="Enter brief">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Country</label>
+                            <input type="email" class="form-control" id="country" placeholder="Enter country">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Description</label>
+                            <input type="text" class="form-control" id="description" placeholder="Enter description">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Guide id</label>
+                            <input type="text" class="form-control" id="guideid" placeholder="Enter guide id">
+                            <img  id ="imagetourguide"width="120" height="120"  >
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Max member</label>
+                            <input type="text" class="form-control" id="maxmember" placeholder="Enter max of member">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Price</label>
+                            <input type="text" class="form-control" id="price" placeholder="Enter price">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Quality</label>
+                            <input type="text" class="form-control" id="quality" placeholder="Enter quality">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="email">Time</label>
+                            <input type="text" class="form-control" id="time" placeholder="Enter time">
+                        </div>
+                    </div>
+                </div>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                            <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                            <button type="button" id="updatebutton" name="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+</body>
+<script>
+      function loaddata(){
+        //document.getElementById('user-name').innerHTML = 'haha';
+       
+        sessionStorage.setItem("idtour","14");
+
+       
+        
+        id = sessionStorage.getItem("idtour");
+        console.log(id);
+        let img = "";
+        //load 
+        $.ajax({
+         url: 'http://localhost:8080/api/tours/' +id,
+         type: 'GET',
+         contentType: 'application/json',
+         dataType: 'JSON',
+         success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+             document.getElementById('tourname').value = response.name;
+        document.getElementById('brief').value = response.brief;
+        document.getElementById('country').value = response.country;
+        document.getElementById('description').value = response.description;
+        document.getElementById('guideid').value = response.tourguide.id;
+        document.getElementById('maxmember').value= response.maxmember ;
+        document.getElementById('price').value = response.price;
+        document.getElementById('quality').value = response.quality;
+        console.log(response.price)
+        document.getElementById('time').value= response.time ;
+        $('#imagetour').attr('src', response.image);
+        $('#imagetourguide').attr('src', response.tourguide.image);
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+
+          console.log("khong load dc ");
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+            
+       
+         }
+     })
+     $('#updatebutton').click(function() {
+
+        updateData();
+     })
+     function updateData(){
+        let name =document.getElementById('tourname').value;
+        let brief = document.getElementById('brief').value;
+        let country = document.getElementById('country').value;
+        let description =document.getElementById('description').value;
+       
+        let id = document.getElementById('guideid').value;
+        let tourguide = {id};
+        let idtour =sessionStorage.getItem("idtour");
+        let maxmember=document.getElementById('maxmember').value;
+        let price=document.getElementById('price').value;
+        let quality=document.getElementById('quality').value;
+        let time =document.getElementById('time').value;
+        var formData = {name,brief,country,description,tourguide,maxmember,price,quality,time};
+        $.ajax({
+         url: 'http://localhost:8080/api/tours/' +idtour,
+         type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                dataType: 'JSON',
+                success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+           
+             alert("edit thanh cong!");
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+
+             alert("edit that bai ");
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+             
+       
+           
+         }
+     })
+       
+     }
+    }
+</script>
+</html>

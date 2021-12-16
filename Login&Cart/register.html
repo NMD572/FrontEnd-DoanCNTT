@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Register popup box</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+  <div class="main-popup">
+  	 <div class="box">
+  	 	 <div class="img-area">
+  	 	 	<div class="img">
+  	 	 	</div>
+  	 	 	<h1>TRAVELEZ</h1>
+  	 	 </div>
+  	 	 <div class="form">
+  	 	 	<div class="close">&times;</div>
+  	 	 	<h1>Register</h1>
+  	 	 	<form>
+  	 	 		<div class="form-group">
+  	 	 			<input type="text" placeholder="Username" class="form-control" name ="username" id ="username" >
+  	 	 		</div>
+                    <div class="form-group">
+  	 	 			<input type="text" placeholder="Email" class="form-control" name ="email" id ="email">
+  	 	 		</div>
+                    <div class="form-group">
+  	 	 			<input type="text" placeholder="Phone" class="form-control" name ="phone" id ="phone">
+  	 	 		</div>
+                    <div class="form-group">
+  	 	 			<input type="password" placeholder="Password" class="form-control" name ="password" id ="password">
+  	 	 		</div>
+  	 	 		<div class="form-group">
+  	 	 			<input type="password" placeholder="RePassword" class="form-control" name ="repassword" id ="repassword">
+  	 	 		</div>
+
+  	 	 		
+  	 	 		<button type="button" class="btn" id ="buttonregis">Register</button>
+                    <a href="index.html" target="_blank" class ="inputloginc" >Click here to Login</a>  <br>
+  	 	 	</form> 
+  	 	 </div>
+  	 </div>
+  </div>
+
+<script src="script.js"></script>
+<script>
+	
+	$('#buttonregis').click(function() {
+		let username =$('#username').val();
+  	let password =$('#password').val();
+	let email =$('#email').val();
+  	let phone =$('#phone').val();
+    let role =0;
+	  console.log(username);
+	  console.log(password);
+	var formData = {username, password,email,phone,role};
+    $.ajax({
+         url: 'http://localhost:8080/api/users/get/' +email,
+         type: 'GET',
+         contentType: 'application/json',
+         dataType: 'JSON',
+         success: 
+         function (response) 
+         {
+             console.log("Venue Successfully Patched!");
+             console.log(response);
+             alert("Email đã được sử dụng");
+             
+         }
+         ,
+         error: function (jqXHR) {
+             // log the error to the console
+            // console.log("The following error occured: " + textStatus, errorThrown);
+            alert("khong ton tai email");
+            $.ajax({
+                url: 'http://localhost:8080/api/users',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(formData),
+                dataType: 'JSON',
+                success: 
+                function (response) 
+                {
+                    console.log("Venue Successfully Patched!");
+                    console.log(response);
+                
+                    //$("#table-data tr").remove(); 
+                    //createDivGridTravel(response);
+                    
+                    alert("insert thanh cong")
+                    
+                }
+                ,
+                error: function (jqXHR) {
+                    // log the error to the console
+                    console.log("The following error occured: " + textStatus, errorThrown);
+                },
+                complete: function () {
+                    console.log("Venue Patch Ran");
+                
+                }
+                    })
+            
+ 
+         },
+         complete: function () {
+             console.log("Venue Patch Ran");
+           
+         }
+     })
+  
+})
+function createDivGridTravel(response){
+    const itemContainer=document.getElementById("test");
+    const contentTour=response.username;
+    console.log(contentTour);
+}
+</script>
+</body>
+</html>
