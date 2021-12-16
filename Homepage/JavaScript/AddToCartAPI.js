@@ -16,7 +16,8 @@ window.addEventListener("load",function(){
 })
 function getUserInCart()
 {
-    let id = 12;    //thay bằng bước xử lý userid
+    let id = sessionStorage.getItem("idUser");    //thay bằng bước xử lý userid
+    console.log(id);
     if(id===null)
         id=-1;
     let userincart={id};
