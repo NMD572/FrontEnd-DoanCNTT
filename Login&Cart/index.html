@@ -75,10 +75,11 @@ emailjs.init("user_bboVfPjrrnxFUHlg1eFiG");
 
 <script src="script.js"></script>
 <script type="text/javascript">
-  var codeI="";
+  
   function sendEmail(params) {
-    let checkE =0;
-    let email="";
+    var codeI="";
+    var checkE =0;
+    var email="";
     var idU ;
      email = document.getElementById('emailSend').value;
     $.ajax({
@@ -92,8 +93,27 @@ emailjs.init("user_bboVfPjrrnxFUHlg1eFiG");
              console.log("Venue Successfully Patched!");
              console.log(response);
             idU=response.id;
-           checkE =1;
-
+            sessionStorage.setItem("idUser",response.id);
+           let temps= makeid(12);
+    codeI = temps;
+    console.log(temps);
+     document.getElementById('editp2').style.display = "";
+     //kiem tra email co trong tai khoan
+     //
+   
+    var tempParams ={
+      from_name: "Travelez",
+      to_name: "user",
+      message: "Cám ơn bạn đã gửi yêu cầu tới chúng tôi!\nMật khẩu mới của bạn là: " +temps +"\n Bạn có thể thay đổi mật khẩu trong trang thông tin người dùng!!",
+      to_email:email
+    };
+	emailjs.send("service_pol96gj","template_9czj4y7",tempParams)
+  .then(function(res){
+    console.log("success",res.status);
+    alert("New Password has been sent")
+    updatePass(codeI);
+    document.getElementById('editp2').style.display = "";
+  })
              
              
          }
@@ -109,27 +129,7 @@ emailjs.init("user_bboVfPjrrnxFUHlg1eFiG");
            
          }
      })
-    if(checkE==1){
-    
-     document.getElementById('editp2').style.display = "";
-     //kiem tra email co trong tai khoan
-     //
-    let temps= makeid(12);
-    codeI = temps;
-    var tempParams ={
-      from_name: "Travelez",
-      to_name: "user",
-      message: "Cám ơn bạn đã gửi yêu cầu tới chúng tôi!\nMật khẩu mới của bạn là: " +temps +"\n Bạn có thể thay đổi mật khẩu trong trang thông tin người dùng!!",
-      to_email:email
-    };
-	emailjs.send("service_pol96gj","template_9czj4y7",tempParams)
-  .then(function(res){
-    console.log("success",res.status);
-    alert("New Password has been sent")
-    updatePass(codeI);
-    document.getElementById('editp2').style.display = "";
-  })
-}
+   
 }
 	let email ="";
   	let password ="";
