@@ -17,6 +17,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
         <!--font awesome-->
+        <script src="https://kit.fontawesome.com/a6d322e01c.js" crossorigin="anonymous"></script>
         <script src="/Homepage/JavaScript/SearchTravel.js"></script>
         <script src="/Homepage/JavaScript/Header.js"></script>
         <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
@@ -266,7 +267,7 @@
           </script> -->
           <script id="tour-item-template" type="text/x-handlebars-template">
             <div class="gridItem ">
-              <div class="gridImgContainer"><a href="#"><img class="gridImg"  src={{image}} alt=""></a></div>
+              <div class="gridImgContainer"><a href={{urlViewTour}}><img class="gridImg"  src={{image}} alt=""></a></div>
               <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
               <div class="infoTravel">
                   <div><i class="far fa-calendar-check"></i>{{time}}</div>

@@ -1,0 +1,186 @@
+#listNavBar{
+    visibility: hidden;
+}
+#tourInfo{
+    box-shadow: 0 0 5px rgba(0,0, 0, 0.3);
+    margin-left: 15%;
+    margin-top: calc(10vh - 80px);
+    height: 60vh;
+    width: 70%;
+    vertical-align:middle;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.tourImage{
+    margin: 0px 15px;
+    width: 40%;
+    height: 80%;
+    vertical-align: middle;
+}
+.tourImage>img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.tourInfo-text{
+    /* border: solid red; */
+    margin-right: 15px;
+    height: 80%;
+    width: calc(60% - 45px);
+}
+.tourInfo-text>div{
+    margin-bottom: 15px !important;
+    font-size: 25px;
+    font-family: var(--primary-font-family);
+}
+.tourInfo-text .tourName{
+    margin-top: 5px;
+    font-size: 50px !important;
+    font-weight: 500;
+}
+.tourQuality>span{
+    margin-right: 5px;
+}
+.tourQuality .qualityNumber{
+    color:gold;
+    margin-left:4px;
+}
+.tourQuality .qualityStar{
+    vertical-align: middle;
+}
+.tourQuality .countUsedText{
+    color:rgba(0,0, 0, 0.5);
+}
+.tourPrice{
+    /* border: solid red; */
+    height: 100px;
+    background-color: rgba(0,0, 0, 0.05);
+}
+.tourPrice .priceNumber{
+    margin-left: 25px;
+    font-size: 50px !important;
+    color:rgba(255, 0, 0, 0.8) !important;
+    line-height: 100px;
+}
+.tourPrice .priceIcon{
+    line-height: 50px;
+    vertical-align: super;
+    font-size: 30px;
+    color:rgba(255, 0, 0, 0.8) !important;
+}
+.tourInfo-date-max-action *{
+    margin-right: 10px;
+    font-size: 25px;
+}
+.tourBrief *{
+    font-size: 25px;
+}
+.tourBrief .tourBriefTitle{
+    font-weight: 700;
+}
+.btn-Add-To-Cart{
+    margin: auto;
+    margin-top: 50px;
+    height: 70px;
+    width: 250px;
+    background-color: var(--primary-color);
+}
+
+.btn-Add-To-Cart .iconCartPlus{
+    height: 100%;
+    width: 100%;
+    font-size: 25px;
+    line-height: 70px !important;
+    cursor: pointer;
+    text-align: center;
+    color:white;
+}
+#tourguideInfo{
+    box-shadow: 0 0 5px rgba(0,0, 0, 0.3);
+    margin: 5vh 15%;
+    height: calc(30vh - 10vh);
+    width: 70%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+#tourguideInfo .tourguideImage{
+    margin-left: 15px;
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+}
+.tourguideImage>img{
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+}
+#tourguideInfo .tourguideInfo-Text{
+    height: 150px;
+    width: 300px;
+    margin-left: 20px;
+}
+.tourguideInfo-Text .touguideName-name{
+    font-size: 30px;
+    font-weight: 700;
+}
+.tourguideInfo-Text .tourguideQuality{
+    font-size: 25px;
+}
+.tourguideInfo-Text .tourguideLink{
+    font-size: 25px;
+}
+.tourguideLink > a{
+    text-decoration: none;
+    color: black;
+}
+.tourguideLink i{
+    margin-right: 10px;
+    font-size: 30px;
+}
+.tourguideLink i:hover{
+    color:var(--primary-color) !important;
+}
+.tourguideDescription{
+    margin-right: 15px;
+    height: 150px;
+    width: calc(100% - 150px - 300px - 20px - 15px);
+}
+.tourguideDescription > textarea{
+    border: none;
+    width: 100%;
+    height: 100%;
+    resize: none;
+    font-size: 20px;
+    font-family: var(--primary-font-family);
+}
+.stars-container {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    font-size:20px;
+  }
+  
+  .stars-container:before {
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    color: lightgray;
+    font-size:20px;
+  }
+  
+  .stars-container:after {
+    position: absolute;
+    margin-top: -5px;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    color: gold;
+    overflow: hidden;
+    font-size:20px;
+  }

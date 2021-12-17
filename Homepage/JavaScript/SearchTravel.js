@@ -115,6 +115,7 @@ function showTour(response)
     {
         let template = Handlebars.compile( $("#tour-item-template").html());
         let contentVAL={
+            urlViewTour:"/ViewTour/HTML/ViewTour.html?tourId="+listTour[i].id,
             image:listTour[i].image,
             time:listTour[i].time,
             maxmember:listTour[i].maxmember,

@@ -4,13 +4,32 @@
         <title>View Tour</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
+        <link href="/Homepage/CSS/Base.css" rel="stylesheet">
+        <link href="/Homepage/CSS/Header.css" rel="stylesheet">
+        <link href="/ViewTour/CSS/ViewTour.css" rel="stylesheet">
+        <!--font awesome-->
+        <script src="https://kit.fontawesome.com/a6d322e01c.js" crossorigin="anonymous"></script>
+        <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/Homepage/JavaScript/Header.js"></script>
+        <script src="/ViewTour/Javascript/ViewTour.js"></script>
+        <script src="/ViewTour/Javascript/AddToCartInView.js"></script>
     </head>
+    <style>
+        #headerSpace{
+            height: var(--fixed-header-height);
+            display: block !important;
+        }
+        #header{
+            position:relative;
+        }
+    </style>
     <body>
+        <div id="headerSpace"></div>
         <div id="header">
             <div id="divHeader">
                 <div id="divLogo" class="formatPosition">
-                    <div><a href="/Homepage/HTML/index.html"><img src="/Homepage/Image/logo.png" alt=""></a></div>
+                    <div><a href="/Homepage/HTML/Homepage.html"><img src="/Homepage/Image/logo.png" alt=""></a></div>
                 </div>
                 <div id="listNavBar" class="formatPosition">
                     <ul>
@@ -38,5 +57,75 @@
                 </div>
             </div>
         </div>
+    <div id="tourContainer">
+        <div id="tourInfo">
+            <div class="tourImage">
+                <img src="https://sgtourism.vn/wp-content/uploads/2015/09/du-lich-con-dao-3.jpg" alt="">
+            </div>
+            <div class="tourInfo-text">
+                    <div class="tourName">Title</div>
+                    <div class="tourQuality"><span class="qualityNumber">5</span><span class="qualityStar">*****</span><span class="countUsed">| 5 </span><span class="countUsedText">Sold</span></div>
+                    <div class="tourPrice"><span class="priceNumber">500</span><i class="fas fa-dollar-sign priceIcon"></i></div>
+                    <div class="tourInfo-date-max-action"><i class="fas fa-user-friends"></i><span>12</span><i class="far fa-calendar-check"></i><span>14</span><i class="far fa-dot-circle"></i><span>Skiing</span></div>
+                    <div class="tourBrief"><span class="tourBriefTitle">Brief: </span><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse architecto pariatur aut impedit eos provident corrupti, distinctio ratione magnam. Quae tempore recusandae deserunt.</span></div>
+                    <div class="btn-Add-To-Cart">
+                        <i class="fas fa-cart-plus iconCartPlus">  Add to Cart</i>
+                    </div>
+            </div>
+        </div>
+        <div id="tourguideInfo">
+            <div class="tourguideImage">
+                <img src="https://sgtourism.vn/wp-content/uploads/2015/09/du-lich-con-dao-3.jpg" alt="">
+            </div>
+            <div class="tourguideInfo-Text">
+                <div class="touguideName-name">TourguideName</div>
+                <div class="tourguideQuality">*****</div>
+                <div class="tourguideLink">
+                    <a class="tourguideLinkFace" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="tourguideLinkInsta" href=""><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="tourguideDescription">
+                <textarea readonly>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis vel perspiciatis, quo tempore facilis rerum? Neque similique nulla sapiente in dolorum maiores voluptas. Dicta quo dolorem nihil, aspernatur saepe ex. Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias dolore natus quia laboriosam blanditiis obcaecati iste id beatae minus aperiam ipsa explicabo quis alias, illo voluptatum sint ducimus aliquid fugit.</textarea>
+            </div>
+        </div>
+    </div>
+
+
+    <script id="tourInfo-template" type="text/x-handlebars-template">
+        <div id="tourInfo">
+            <div class="tourImage">
+                <img src={{imgTourLink}} alt="">
+            </div>
+            <div class="tourInfo-text">
+                    <div class="tourName">{{Title}}</div>
+                    <div class="tourQuality"><span class="qualityNumber">{{qualityNumber}}</span><span class="qualityStar" id="qualityStar">{{qualityStar}}</span><span class="countUsed">| {{countUsed}} </span><span class="countUsedText">Sold</span></div>
+                    <div class="tourPrice"><span class="priceNumber">{{price}}</span><i class="fas fa-dollar-sign priceIcon"></i></div>
+                    <div class="tourInfo-date-max-action"><i class="fas fa-user-friends"></i><span>{{maxmember}}</span><i class="far fa-calendar-check"></i><span>{{time}}</span><i class="far fa-dot-circle"></i><span>{{action}}</span></div>
+                    <div class="tourBrief"><span class="tourBriefTitle">Brief: </span><span>{{Brief}}</span></div>
+                    <div class="btn-Add-To-Cart" id="btn-Add-To-Cart">
+                        <i class="fas fa-cart-plus iconCartPlus">  Add to Cart</i>
+                    </div>
+            </div>
+        </div>
+    </script>    
+    <script id="tourguideInfo-template" type="text/x-handlebars-template">
+      <div id="tourguideInfo">
+        <div class="tourguideImage">
+            <img src={{tourguideImageLink}} alt="">
+        </div>
+        <div class="tourguideInfo-Text">
+            <div class="touguideName-name">{{TourguideName}}</div>
+            <div class="tourguideQuality" id="tourguideQuality">{{qualityStarTourguide}}</div>
+            <div class="tourguideLink">
+                <a class="tourguideLinkFace" href={{facebookLink}}><i class="fab fa-facebook-f"></i></a>
+                <a class="tourguideLinkInsta" href={{instagramLink}}><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="tourguideDescription">
+            <textarea readonly>{{tourguideDescription}}</textarea>
+        </div>
+      </div>
+    </script>     
     </body>
-</html>
+</html>     

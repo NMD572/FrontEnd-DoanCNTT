@@ -1,9 +1,13 @@
-window.addEventListener("load",async function(){
-    const btnAddToCarts= document.querySelectorAll(".btn-Add-To-Cart");
-    const idTourArray=document.querySelectorAll(".dataIdTour");
-    btnAddToCarts.forEach((item) => item.addEventListener("click",function(e){
-    const btnIndex = parseInt(e.target.dataset.index);
-    let id = parseInt(idTourArray[btnIndex].innerHTML);                     //tourid
+window.addEventListener("load",function(){
+    let btnAdd=document.getElementById("btn-Add-To-Cart");
+    if(btnAdd)                                       //btnSearch != null
+    {
+        btnAdd.addEventListener("click", checkAndAddToCart,false);
+    }
+})
+async function checkAndAddToCart()
+{
+    let id=getTourId();
     let tourincart = {id};
     let userincart = getUserInCart();
     let status = "cart";
@@ -12,12 +16,17 @@ window.addEventListener("load",async function(){
     {
         callAPIAddToCart(status,userincart,tourincart);
     }
-    }))
-})
+}
+function getTourId()
+{
+    let url=new URL(location.href);
+    let tourId=url.searchParams.get("tourId");         //Xử lý tourid\
+    return tourId;
+}
 function getUserInCart()
 {
     let id = sessionStorage.getItem("idUser");    //thay bằng bước xử lý userid
-    console.log(id);
+    alert(id);
     if(id===null)
         id=-1;
     let userincart={id};

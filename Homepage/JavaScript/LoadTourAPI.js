@@ -44,7 +44,7 @@ function createDivGridTravel(response){
         let gridImgContainer=document.createElement("div");
         gridImgContainer.classList.add("gridImgContainer");
         let gridImgA=document.createElement("a");
-        gridImgA.href="https://www.google.com/";
+        gridImgA.href="/ViewTour/HTML/ViewTour.html?tourId="+contentTour[i].id;
         let gridImg=document.createElement("img");
         gridImg.classList.add("gridImg");
         gridImg.setAttribute('src', contentTour[i].image);
