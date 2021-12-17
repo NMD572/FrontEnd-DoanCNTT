@@ -45,7 +45,7 @@ emailjs.init("user_bboVfPjrrnxFUHlg1eFiG");
             <br> <br>
 					<div class="g-signin2" data-onsuccess="onSignIn"></div> 
           <br>
-          <a href="register.html" target="_blank" class ="inputloginc" >Click here to Register</a>  <br>
+          <a href="register.html" class ="inputloginc" >Click here to Register</a>  <br>
           
             <input type="button"  class="btn" value="Forgot Password?" style="width: 280px; margin-top: 10px;" onclick="forgotP()"/>
             <br>
@@ -242,7 +242,7 @@ function onSignIn(googleUser) {
                         //$("#table-data tr").remove(); 
                         //createDivGridTravel(response);
                         
-                        alert("insert thanh cong")
+                        alert("Đăng nhập thành công!")
                         window.location.assign("/Homepage/HTML/Homepage.html");
                         
                     }
@@ -250,7 +250,7 @@ function onSignIn(googleUser) {
                     error: function (jqXHR) {
                         // log the error to the console
                        // console.log("The following error occured: " + textStatus, errorThrown);
-                        alert("insert that bai")
+                        alert("Đăng nhập that bai")
                     },
                     complete: function () {
                         console.log("Venue Patch Ran");
@@ -345,7 +345,7 @@ function onSignIn(googleUser) {
                 console.log("Venue Successfully Patched!");
                 console.log(response);
             
-                alert("edit pass thanh cong!");
+                console.log("edit pass thanh cong!");
                // window.location.assign("");
                 
             }
@@ -354,7 +354,7 @@ function onSignIn(googleUser) {
                 // log the error to the console
                 // console.log("The following error occured: " + textStatus, errorThrown);
 
-                alert("edit that bai ");
+                console.log("edit that bai ");
     
             },
             complete: function () {

@@ -40,15 +40,15 @@
                 </ul>
             </div>
             <div id="listCart" class="formatPosition">
-                <div><a href="Go to cart.html"><i class="fas fa-shopping-cart iconCart"></i></a></div>
+                <div><a href="#" onclick="checkCart()"><i class="fas fa-shopping-cart iconCart"></i></a></div>
                 <div><a href="/Homepage/HTML/SearchTravel.html"><i class="fas fa-search-plus iconCart"></i></a></div>
                 <div id="divUser" onclick="openNav()">
                     <i class="fas fa-user iconUser"></i>
                     <i class="fas fa-sort-down iconUser"></i>
                     <ul id="nav">
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Bill</a></li>
-                        <li><a href="#">Log out</a></li>
+                      <li><a href="/EditUser&CDTour/editUser.html">My Account</a></li>
+                      <li><a  onclick="checkAdmin()" href="#">Tour Manage</a></li>
+                      <li><a href="/Login&Cart/index.html ">Log out</a></li>
                     </ul>
                 </div> 
             </div>
@@ -286,6 +286,15 @@
               </div>
           </div>
           </script>
-          
+          <script>
+             function checkAdmin(){
+            if(sessionStorage.getItem("Role")=="1") window.location.assign("/Login&Cart/tourAdmin.html");
+                  else  alert("Bạn không được phép truy cập vào đây!!");
+        }
+        function checkCart(){
+            if(sessionStorage.getItem("Role")=="1") window.location.assign("/Login&Cart/cartAdmin.html");
+                  else   window.location.assign("/Login&Cart/cart.html");
+        }
+          </script>
     </body>
 </html>

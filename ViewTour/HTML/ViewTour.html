@@ -49,9 +49,9 @@
                         <i class="fas fa-user iconUser"></i>
                         <i class="fas fa-sort-down iconUser"></i>
                         <ul id="nav">
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Bill</a></li>
-                            <li><a href="#">Log out</a></li>
+                            <li><a href="/EditUser&CDTour/editUser.html">My Account</a></li>
+                            <li><a  onclick="checkAdmin()" href="#">Tour Manage</a></li>
+                            <li><a href="/Login&Cart/index.html ">Log out</a></li>
                         </ul>
                     </div> 
                 </div>
@@ -128,4 +128,10 @@
       </div>
     </script>     
     </body>
+    <script>
+        function checkAdmin(){
+            if(sessionStorage.getItem("Role")=="1") window.location.assign("/Login&Cart/tourAdmin.html");
+                  else  alert("Bạn không được phép truy cập vào đây!!");
+        }
+    </script>
 </html>     

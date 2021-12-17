@@ -105,9 +105,40 @@ function calc(control)
 }
 function remove(control){
     console.log(control.dataset.index);
-    console.log(listCart[control.dataset.index-1]);
-    window.location.assign("./FEDoan/HomePage/FrontEnd-DoanCNTT/HTML/index.html");
-    console.log(control);
+    var id =listCart[control.dataset.index-1];
+
+    $.ajax({
+        url: 'http://localhost:8080/api/cart/' +id,
+        type: 'DELETE',
+        contentType: 'application/json',
+        dataType: 'JSON',
+        success:
+        function (response) 
+        {
+           console.log(response);
+        
+           alert("Xóa chuyến đi trong giỏ hàng thành công!!");
+           window.location.assign("");
+           
+   
+   
+        }
+        ,
+        error: function (jqXHR) {
+            // log the error to the console
+           // console.log("The following error occured: " + textStatus, errorThrown);
+           console.log("Xóa thất bại");
+   
+        },
+        complete: function () {
+           console.log("Venue Patch Ran");
+            
+      
+          
+        }
+    })
+    
+
 }
 
 function sumall()

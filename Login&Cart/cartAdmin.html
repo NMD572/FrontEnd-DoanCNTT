@@ -112,6 +112,7 @@
             <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-secondary btn-block" onclick="SetProgress()" href="#" ><i class="fe-icon-refresh-ccw"></i>&nbsp;View tour in progress </a></div>
             <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-secondary btn-block" onclick="SetDone()" href="#" ><i class="fe-icon-refresh-ccw"></i>&nbsp;View tour complete </a></div>
             <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-primary btn-block" href="#" onclick="UpdateCart()"><i class="fe-icon-credit-card"></i>&nbsp;Update</a></div>
+            <div class="col-sm-6 mb-3"><a class="btn btn-style-1 btn-primary btn-block" style="width:300px" href="/Homepage/HTML/Homepage.html"><i class="far fa-undo-alt"></i>&nbsp;Go back</a></div>
         </div>
     
            
@@ -192,7 +193,8 @@ function updateStatus(id,status){
             console.log(response);
           
             console.log("cap nhat status");
-           
+            alert("Cập nhật thành công!!");
+            window.location.assign("");
 
         }
         ,
@@ -212,5 +214,6 @@ function updateStatus(id,status){
     })
       
     }
+    
 </script>
 </html>

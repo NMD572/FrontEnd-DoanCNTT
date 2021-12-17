@@ -1,7 +1,7 @@
 window.addEventListener("load",async function(){
     const btnAddToCarts= document.querySelectorAll(".btn-Add-To-Cart");
     const idTourArray=document.querySelectorAll(".dataIdTour");
-    btnAddToCarts.forEach((item) => item.addEventListener("click",function(e){
+    btnAddToCarts.forEach((item) => item.addEventListener("click",async function(e){
     const btnIndex = parseInt(e.target.dataset.index);
     let id = parseInt(idTourArray[btnIndex].innerHTML);                     //tourid
     let tourincart = {id};
