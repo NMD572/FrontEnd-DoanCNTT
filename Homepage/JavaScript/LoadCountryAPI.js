@@ -15,7 +15,7 @@ $('#Nationalresorts').ready(function() {
         ,
         error: function (jqXHR) {
             // log the error to the console
-            console.log("The following error: " + textStatus, errorThrown);
+            console.log("The following error: ");
         },
         complete: function () {
             console.log("Venue Patch Ran");
