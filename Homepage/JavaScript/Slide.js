@@ -1,3 +1,5 @@
+
+var sliderItemWidth;
 window.addEventListener("load",function(){
     console.log("hello 4");
     const sliderMain = document.querySelector(".slider-main");
@@ -5,10 +7,10 @@ window.addEventListener("load",function(){
     const nextBtn = document.querySelector(".slider-next");
     const prevBtn = document.querySelector(".slider-previous");
     const dotItems = document.querySelectorAll(".slider-dot-item");
-    //Lấy độ rộng của 1 hình ảnh
-    const sliderItemWidth = sliderItems[0].offsetWidth;
-    //Lấy độ rộng của tất cả các ảnh
     
+    //Lấy độ rộng của 1 hình ảnh
+    //Lấy độ rộng của tất cả các ảnh
+    sliderItemWidth = sliderItems[0].offsetWidth;
     //sliderMain.style.width=`${slidesLength*sliderItemWidth}px`;
     //console.log("width",`${slidesLength*sliderItemWidth}px`);
     
@@ -38,6 +40,10 @@ window.addEventListener("load",function(){
         sliderItems[index].classList.add("active");
         //console.log(index);
     }));
+window.addEventListener("resize", function(){
+    const sliderItems = document.querySelectorAll(".slider-item");
+    sliderItemWidth = sliderItems[0].offsetWidth;
+});
     function handleChangeSlide(direction){
         if(direction=="prev")
         {

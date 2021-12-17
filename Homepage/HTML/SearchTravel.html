@@ -4,9 +4,11 @@
         <title>Search</title>
         <meta charset="utf-8">
         
-        <link rel="stylesheet" href="/CSS/SearchTravel.css">
-        <link href="/CSS/Base.css" rel="stylesheet">
-        <link href="/CSS/main.css" rel="stylesheet" />
+        <link href="/Homepage/CSS/Base.css" rel="stylesheet">
+        <link href="/Homepage/CSS/Header.css" rel="stylesheet">
+        <link href="/Homepage/CSS/main.css" rel="stylesheet" />
+        <link href="/Homepage/CSS/GridTravel.css" rel="stylesheet">
+        <link href="/Homepage/CSS/SearchTravel.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         
@@ -15,29 +17,44 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato:400,600,700" rel="stylesheet" />
         <!--font awesome-->
-        
-        <link href="/CSS/GridTravel.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/a6d322e01c.js" crossorigin="anonymous"></script>
+        <script src="/Homepage/JavaScript/SearchTravel.js"></script>
+        <script src="/Homepage/JavaScript/Header.js"></script>
+        <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
     </head>
     <body>
-        <nav class="navbar">
-            <div class="container-fluid">
-              <div class="logo">
-                <a href="/HTML/index.html"><img src="/Image/logo.png" alt=""></a>
-              </div>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="	glyphicon glyphicon-search"></span> Search</a></li>
-                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> User <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="#">My Account</a></li>
-                      <li><a href="#">Bill</a></li>
-                      <li><a href="#">Log out</a></li>
-                    </ul>
-                  </li>
-                <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-              </ul>
+      <div id="header">
+        <div id="divHeader">
+            <div id="divLogo" class="formatPosition">
+                <div><a href="/Homepage/HTML/index.html"><img src="/Homepage/Image/logo.png" alt=""></a></div>
             </div>
-          </nav>
-            
+            <div id="listNavBar" class="formatPosition">
+                <ul>
+                    <li><a href="#headerSpace"><b>Home</b></a></li>
+                    <li><a href="#GridTravel"><b>Tours</b></a></li>
+                    <li><a href="#IntroductionVideo"><b>Video</b></a></li>
+                    <li><a href="#TopReview"><b>Reviews</b></a></li>
+                    <li><a href="#TopTourguide"><b>Tourguide</b></a></li>
+                    <li><a href="#Nationalresorts"><b>Destination</b></a></li>
+                    <li><a href="#footer"><b>Shop</b></a></li>
+                </ul>
+            </div>
+            <div id="listCart" class="formatPosition">
+                <div><a href="Go to cart.html"><i class="fas fa-shopping-cart iconCart"></i></a></div>
+                <div><a href="/Homepage/HTML/SearchTravel.html"><i class="fas fa-search-plus iconCart"></i></a></div>
+                <div id="divUser" onclick="openNav()">
+                    <i class="fas fa-user iconUser"></i>
+                    <i class="fas fa-sort-down iconUser"></i>
+                    <ul id="nav">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Bill</a></li>
+                        <li><a href="#">Log out</a></li>
+                    </ul>
+                </div> 
+            </div>
+        </div>
+    </div>
+
           <div class="container">
               <div class="search">
 
@@ -50,7 +67,7 @@
               <div class="inner-form">
                 <div class="basic-search">
                   <div class="input-field">
-                    <input id="search" type="text" placeholder="Type Keywords you want to search" />
+                    <input id="search" name="search" type="text" placeholder="Type Keywords you want to search" />
                     <div class="icon-wrap">
                       <svg class="svg-inline--fa fa-search fa-w-16" fill="#ccc" aria-hidden="true" data-prefix="fas" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
@@ -62,38 +79,39 @@
                   <span class="desc">ADVANCED SEARCH</span>
                   <div class="row">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="searchOption" id="flexRadioDefault1" value="tour">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Tour's Name
                         </label>
                       </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="searchOption" id="flexRadioDefault1" value="tourguide">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Tour Guide's Name
                         </label>
                       </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="searchOption" id="flexRadioDefault1" value="all">
                         <label class="form-check-label" for="flexRadioDefault1">
                           Search All
                         </label>
                     </div>
                   </div>
                   <div class="row second">
-                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="height: 40px; width: 50%; border-color: rgb(70, 160, 255);">
-                        <option selected>Relevance</option>
-                        <option value="1">Order by rating score</option>
-                        <option value="2">Lasted</option>
-                        <option value="3">Order by price: Low to high</option>
-                        <option value="4">Order by price: High to low</option>
+                    <select id="orderOptions" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" style="height: 40px; width: 50%; border-color: rgb(70, 160, 255);">
+                        <option value="Relevance" selected="selected">Relevance</option>
+                        <option value="Rating">Order by rating score</option>
+                        <option value="MemberLTH">Order by max member: Low to high</option>
+                        <option value="MemberHTL">Order by max member: High to low</option>
+                        <option value="PriceLTH">Order by price: Low to high</option>
+                        <option value="PriceHTL">Order by price: High to low</option>
                       </select>
                   </div>
                   <div class="row third-center">
                     <div class="input-field">
                       <div class="group-btn">
-                        <button class="btn-delete" id="delete">RESET</button>
-                        <button class="btn-search">SEARCH</button>
+                        <a href="#divGrid"><div class="btn-search" id="btn-search">SEARCH</div></a>
+                        <!-- <a href="#divGrid"></a> -->
                       </div>
                     </div>
                   </div>
@@ -122,64 +140,7 @@
                             <div class="dataIdTour">0</div>
                         </div>
                     </div>
-                    <div class="gridItem">
-                        <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                        <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                        <div class="infoTravel">
-                            <div><i class="far fa-calendar-check"></i>1</div>
-                            <div><i class="fas fa-user-friends"></i>13+</div>
-                            <div><i class="far fa-dot-circle"></i>Skiing</div>
-                        </div>
-                        <div class="infoTravelText">
-                            <b><h3>Title</h3></b>
-                            <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                            <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                            <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-                        </div>
-                        <div class="btn-Add-To-Cart" >
-                            <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                            <div class="dataIdTour">1</div>
-                        </div>
-                    </div>
-                      <div class="gridItem">
-                        <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                        <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                        <div class="infoTravel">
-                            <div><i class="far fa-calendar-check"></i>1</div>
-                            <div><i class="fas fa-user-friends"></i>13+</div>
-                            <div><i class="far fa-dot-circle"></i>Skiing</div>
-                        </div>
-                        <div class="infoTravelText">
-                            <b><h3>Title</h3></b>
-                            <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                            <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                            <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-                        </div>
-                        <div class="btn-Add-To-Cart" >
-                            <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                            <div class="dataIdTour">1</div>
-                        </div>
-                    </div>
-                      <div class="gridItem">
-                        <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                        <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                        <div class="infoTravel">
-                            <div><i class="far fa-calendar-check"></i>1</div>
-                            <div><i class="fas fa-user-friends"></i>13+</div>
-                            <div><i class="far fa-dot-circle"></i>Skiing</div>
-                        </div>
-                        <div class="infoTravelText">
-                            <b><h3>Title</h3></b>
-                            <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                            <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                            <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-                        </div>
-                        <div class="btn-Add-To-Cart" >
-                            <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                            <div class="dataIdTour">1</div>
-                        </div>
-                    </div>
-                    <div class="gridItem">
+                    <div class="gridItem ">
                       <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
                       <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
                       <div class="infoTravel">
@@ -190,15 +151,15 @@
                       <div class="infoTravelText">
                           <b><h3>Title</h3></b>
                           <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                          <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                          <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
+                          <b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
+                          <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b>
                       </div>
-                      <div class="btn-Add-To-Cart" >
-                          <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                          <div class="dataIdTour">1</div>
+                      <div class="btn-Add-To-Cart">
+                          <i class="fas fa-cart-plus iconCartPlus" data-index="0">  Add to Cart</i>
+                          <div class="dataIdTour">0</div>
                       </div>
                   </div>
-                  <div class="gridItem">
+                  <div class="gridItem ">
                     <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
                     <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
                     <div class="infoTravel">
@@ -209,15 +170,15 @@
                     <div class="infoTravelText">
                         <b><h3>Title</h3></b>
                         <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                        <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                        <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
+                        <b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
+                        <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b>
                     </div>
-                    <div class="btn-Add-To-Cart" >
-                        <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                        <div class="dataIdTour">1</div>
+                    <div class="btn-Add-To-Cart">
+                        <i class="fas fa-cart-plus iconCartPlus" data-index="0">  Add to Cart</i>
+                        <div class="dataIdTour">0</div>
                     </div>
                 </div>
-                <div class="gridItem">
+                <div class="gridItem ">
                   <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
                   <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
                   <div class="infoTravel">
@@ -228,262 +189,15 @@
                   <div class="infoTravelText">
                       <b><h3>Title</h3></b>
                       <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                      <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                      <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
+                      <b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
+                      <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b>
                   </div>
-                  <div class="btn-Add-To-Cart" >
-                      <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                      <div class="dataIdTour">1</div>
+                  <div class="btn-Add-To-Cart">
+                      <i class="fas fa-cart-plus iconCartPlus" data-index="0">  Add to Cart</i>
+                      <div class="dataIdTour">0</div>
                   </div>
               </div>
-              <div class="gridItem">
-                <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                <div class="infoTravel">
-                    <div><i class="far fa-calendar-check"></i>1</div>
-                    <div><i class="fas fa-user-friends"></i>13+</div>
-                    <div><i class="far fa-dot-circle"></i>Skiing</div>
-                </div>
-                <div class="infoTravelText">
-                    <b><h3>Title</h3></b>
-                    <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                    <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                    <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-                </div>
-                <div class="btn-Add-To-Cart" >
-                    <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                    <div class="dataIdTour">1</div>
-                </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
-              </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart" >
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="1">  Add to Cart</i>
-                  <div class="dataIdTour">1</div>
-              </div>
-            </div>
-            <div class="gridItem">
-                <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                <div class="infoTravel">
-                    <div><i class="far fa-calendar-check"></i>1</div>
-                    <div><i class="fas fa-user-friends"></i>13+</div>
-                    <div><i class="far fa-dot-circle"></i>Skiing</div>
-                </div>
-                <div class="infoTravelText">
-                    <b><h3>Title</h3></b>
-                    <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                    <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                    <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-                </div>
-                <div class="btn-Add-To-Cart" >
-                    <i class="fas fa-cart-plus iconCartPlus" data-index="2">  Add to Cart</i>
-                    <div class="dataIdTour">2</div>
-                </div>
-            </div>
-            <div class="gridItem">
+              <div class="gridItem ">
                 <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
                 <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
                 <div class="infoTravel">
@@ -496,91 +210,20 @@
                     <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
                     <b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
                     <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b>
-                </div>           
-                <div class="btn-Add-To-Cart" >
-                    <i class="fas fa-cart-plus iconCartPlus" data-index="3">  Add to Cart</i>
-                    <div class="dataIdTour">3</div>
-                </div>
-            </div>
-            <div class="gridItem">
-                <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                <div class="infoTravel">
-                    <div><i class="far fa-calendar-check"></i>1</div>
-                    <div><i class="fas fa-user-friends"></i>13+</div>
-                    <div><i class="far fa-dot-circle"></i>Skiing</div>
-                </div>
-                <div class="infoTravelText">
-                    <b><h3>Title</h3></b>
-                    <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                    <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                    <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
                 </div>
                 <div class="btn-Add-To-Cart">
-                    <i class="fas fa-cart-plus iconCartPlus" data-index="4">  Add to Cart</i>
-                    <div class="dataIdTour">4</div>
+                    <i class="fas fa-cart-plus iconCartPlus" data-index="0">  Add to Cart</i>
+                    <div class="dataIdTour">0</div>
                 </div>
             </div>
-            <div class="gridItem">
-              <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-              <div class="infoTravel">
-                  <div><i class="far fa-calendar-check"></i>1</div>
-                  <div><i class="fas fa-user-friends"></i>13+</div>
-                  <div><i class="far fa-dot-circle"></i>Skiing</div>
               </div>
-              <div class="infoTravelText">
-                  <b><h3>Title</h3></b>
-                  <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                  <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                  <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-              </div>
-              <div class="btn-Add-To-Cart">
-                  <i class="fas fa-cart-plus iconCartPlus" data-index="4">  Add to Cart</i>
-                  <div class="dataIdTour">4</div>
-              </div>
-          </div>
-          <div class="gridItem">
-            <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-            <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-            <div class="infoTravel">
-                <div><i class="far fa-calendar-check"></i>1</div>
-                <div><i class="fas fa-user-friends"></i>13+</div>
-                <div><i class="far fa-dot-circle"></i>Skiing</div>
-            </div>
-            <div class="infoTravelText">
-                <b><h3>Title</h3></b>
-                <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-            </div>
-            <div class="btn-Add-To-Cart">
-                <i class="fas fa-cart-plus iconCartPlus" data-index="4">  Add to Cart</i>
-                <div class="dataIdTour">4</div>
-            </div>
-        </div>
-                    <div class="gridItem">
-                <div class="gridImgContainer"><a href="https://www.google.com/"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></a></div>
-                <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
-                <div class="infoTravel">
-                    <div><i class="far fa-calendar-check"></i>1</div>
-                    <div><i class="fas fa-user-friends"></i>13+</div>
-                    <div><i class="far fa-dot-circle"></i>Skiing</div>
-                </div>
-                <div class="infoTravelText">
-                    <b><h3>Title</h3></b>
-                    <div><textarea readonly rows="2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam tempore</textarea></div>
-                    <b><b><span><i class="fas fa-dollar-sign"></i></span><span>1000</span>
-                    <span><i class="fas fa-star"></i></span><span>5</span><span>Good</span></b></b>
-                </div>
-                <div class="btn-Add-To-Cart">
-                    <i class="fas fa-cart-plus iconCartPlus" data-index="4">  Add to Cart</i>
-                    <div class="dataIdTour">4</div>
-                </div>
-            </div>
-        </div>
         <!--Phan trang-->
-        <div class="text-center">
+        <div class="text-center paginationTour">
+          <div id="previousPage" class="buttonPage"><b><<</b></div>
+          <div id="pageNumber">1</div>
+          <div id="nextPage"  class="buttonPage"><b>>></b></div>
+        </div>
+        <!-- <div class="text-center">
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
@@ -600,28 +243,49 @@
                   </li>
                 </ul>
               </nav>
-        </div>
+        </div> -->
           <!--Phan trang-->
-          <script src="js/extention/choices.js"></script>
+          <!-- <script src="js/extention/choices.js"></script>
           <script>
-            const customSelects = document.querySelectorAll("select");
-            const deleteBtn = document.getElementById('delete')
-            const choices = new Choices('select',
-            {
+              const customSelects = document.querySelectorAll("select");
+              const deleteBtn = document.getElementById('delete')
+              const choices = new Choices('select',
+              {
               searchEnabled: false,
               itemSelectText: '',
               removeItemButton: true,
-            });
-            deleteBtn.addEventListener("click", function(e)
-            {
-              e.preventDefault()
-              const deleteAll = document.querySelectorAll('.choices__button')
-              for (let i = 0; i < deleteAll.length; i++)
+              });
+              deleteBtn.addEventListener("click", function(e)
               {
-                deleteAll[i].click();
-              }
-            });
-      
+                e.preventDefault()
+                const deleteAll = document.querySelectorAll('.choices__button')
+                for (let i = 0; i < deleteAll.length; i++)
+                {
+                  deleteAll[i].click();
+                }
+              });
+          </script> -->
+          <script id="tour-item-template" type="text/x-handlebars-template">
+            <div class="gridItem ">
+              <div class="gridImgContainer"><a href="#"><img class="gridImg"  src={{image}} alt=""></a></div>
+              <!--<div class="gridBigImgContainer"><img class="gridImg"  src="https://baoninhbinh.org.vn//DATA/ARTICLES/2021/5/17/cuoc-dua-lot-vao-top-100-anh-dep-di-san-van-hoa-va-thien-7edf3.jpg" alt=""></div>-->
+              <div class="infoTravel">
+                  <div><i class="far fa-calendar-check"></i>{{time}}</div>
+                  <div><i class="fas fa-user-friends"></i>{{maxmember}}</div>
+                  <div><i class="far fa-dot-circle"></i>{{action}}</div>
+              </div>
+              <div class="infoTravelText">
+                  <b><h3>{{name}}</h3></b>
+                  <div><textarea readonly rows="2">{{brief}}</textarea></div>
+                  <b><span class="iconDollar"><i class="fas fa-dollar-sign"></i></span><span>{{price}}</span>
+                  <span><i class="fas fa-star"></i></span><span>{{qualityNumber}}</span><span>{{qualityString}}</span></b>
+              </div>
+              <div class="btn-Add-To-Cart">
+                  <i class="fas fa-cart-plus iconCartPlus" data-index="0">  Add to Cart</i>
+                  <div class="dataIdTour">0</div>
+              </div>
+          </div>
           </script>
+          
     </body>
 </html>

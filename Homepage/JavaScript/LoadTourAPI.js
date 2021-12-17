@@ -103,6 +103,7 @@ function createDivGridTravel(response){
         //Xử lý Price and Quality
         let priceAndQuality=document.createElement("b");
         let spanIconPriceTour=document.createElement("span");
+        spanIconPriceTour.classList.add("iconDollar");
         let iPriceTour=document.createElement("i");
         let priceTourVal=document.createElement("span");
         let spanIconQualityTour=document.createElement("span");
@@ -113,7 +114,7 @@ function createDivGridTravel(response){
         iPriceTour.classList.add("fa-dollar-sign");
         iQualityTour.classList.add("fas");
         iQualityTour.classList.add("fa-star");
-        priceTourVal.append(" "+contentTour[i].price);
+        priceTourVal.append(contentTour[i].price);
         qualityTourVal.append(contentTour[i].quality);
         qualityTourValText.append(handleQualityTourValText(contentTour[i].quality));
         //Price
