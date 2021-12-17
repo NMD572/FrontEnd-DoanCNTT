@@ -29,7 +29,7 @@
                            <h5> <p id = "role">Admin</p> </h5>
                     </div>
                     <div class="center">
-                        <button type="button" id="submit" name="submit" class="btn btn-primary">Edit Password</button>
+                        <button type="button" onclick="editPassword()" id="submit" name="submit" class="btn btn-primary">Edit Password</button>
                     </div>
                 </div>
             </div>
@@ -80,9 +80,29 @@
                 <div class="row gutters">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="text-right">
-                            <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button>
+                            <button type="button" id="submit" name="submit" onclick="back()" class="btn btn-secondary">Go Back</button>
                             <button type="submit" id="updatebutton" name="submit" class="btn btn-primary">Update</button>
                         </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" id ="editp1">
+                    <div class="form-group">
+                        <label for="password">Your Pasword</label>
+                        <input type="text" class="form-control" id="password" placeholder="Enter your Password">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" id ="editp2">
+                    <div class="form-group">
+                        <label for="newpassword">New Password</label>
+                        <input type="text" class="form-control" id="newpassword" placeholder="Enter new password">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12" id ="editp3">
+                    <div class="form-group">
+                        <label for="renewpassword">Re New Password</label>
+                        <input type="text" class="form-control" id="renewpassword" placeholder="Enter new password again">
+                        <br>
+                        <button type="submit" name="submit" onclick="updatePass()" class="btn btn-primary">Update Pasword</button>
                     </div>
                 </div>
             </div>
@@ -92,11 +112,14 @@
         </div>
 </body>
 <script>
+    var passwordU = "";
     function loaddata(){
         //document.getElementById('user-name').innerHTML = 'haha';
     
 
-       
+        document.getElementById('editp1').style.display = "none";
+        document.getElementById('editp2').style.display = "none";
+        document.getElementById('editp3').style.display = "none";
         let username ="";
         let fullname ="";
         let phone ="";
@@ -122,11 +145,12 @@
             email =response.email;
              cash=response.cash;
              img =response.image;
+             passwordU = response.password;
             role = response.role;
             console.log(fullname);
             console.log(email);
             console.log(img);
-
+            
              
          }
          ,
@@ -140,7 +164,7 @@
          complete: function () {
              console.log("Venue Patch Ran");
              $('#image').attr('src', img);
-        if(role!=null)
+        if(role!=0)
         document.getElementById('role').innerHTML = 'Admin';
         else  document.getElementById('role').innerHTML = 'User';
 
@@ -150,6 +174,7 @@
         document.getElementById('phone').value = phone;
         document.getElementById('emaildisplay').innerHTML = email;
         document.getElementById('cash').innerHTML = cash +"$";
+       
            
          }
      })
@@ -178,6 +203,7 @@
              console.log(response);
            
              alert("edit thanh cong!");
+             window.location.assign("");
          }
          ,
          error: function (jqXHR) {
@@ -196,6 +222,63 @@
      })
        
      }
+    }
+    function editPassword() {
+
+        document.getElementById('editp1').style.display = "";
+        document.getElementById('editp2').style.display = "";
+        document.getElementById('editp3').style.display = "";
+        
+    }
+    function updatePass(params) {
+        let pass =document.getElementById('password').value;
+        let newpasswword =document.getElementById('newpassword').value;
+        let renewpasswword =document.getElementById('renewpassword').value;
+        if(passwordU!=pass){
+            alert("Vui lòng nhập đúng mật khẩu của bạn! Nếu bạn quên mật khẩu có thể sử dụng chức năng quên mật khẩu ở trang đăng nhập!!")
+        }
+        else if (newpasswword!=renewpasswword){
+            alert("Vui lòng nhập chính xác hai lần mật khẩu mới!!");
+        }
+        else {
+        let password = newpasswword;
+        var formData = {password};
+        let id =sessionStorage.getItem("idUser");
+            $.ajax({
+            url: 'http://localhost:8080/api/users/password/' +id,
+            type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    dataType: 'JSON',
+                    success: 
+            function (response) 
+            {
+                console.log("Venue Successfully Patched!");
+                console.log(response);
+            
+                alert("edit pass thanh cong!");
+                window.location.assign("");
+                
+            }
+            ,
+            error: function (jqXHR) {
+                // log the error to the console
+                // console.log("The following error occured: " + textStatus, errorThrown);
+
+                alert("edit that bai ");
+    
+            },
+            complete: function () {
+                console.log("Venue Patch Ran");
+                
+        
+            
+            }
+        })
+    }
+    }
+    function back() {
+        window.location.assign("");
     }
 </script>
 </html>
