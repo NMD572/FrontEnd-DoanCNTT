@@ -1,9 +1,9 @@
 window.addEventListener("load",function(){
-    let btnAdd=document.getElementById("btn-Add-To-Cart");
-    if(btnAdd)                                       //btnSearch != null
-    {
-        btnAdd.addEventListener("click", checkAndAddToCart,false);
-    }
+    // let btnAdd=document.getElementById("btn-Add-To-Cart");
+    // if(btnAdd)                                       //btnSearch != null
+    // {
+    //     btnAdd.addEventListener("click", checkAndAddToCart,false);
+    // }
 })
 async function checkAndAddToCart()
 {
@@ -26,7 +26,6 @@ function getTourId()
 function getUserInCart()
 {
     let id = sessionStorage.getItem("idUser");    //thay bằng bước xử lý userid
-    alert(id);
     if(id===null)
         id=-1;
     let userincart={id};
