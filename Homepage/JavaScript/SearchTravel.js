@@ -2,14 +2,14 @@ var urlSearchByTourguideName='http://localhost:8080/api/tours/searchByTourguide/
 var urlSearchByTourName='http://localhost:8080/api/tours/searchByTour/';
 var urlSearchAll='http://localhost:8080/api/tours/searchAll/';
 var index;
-window.addEventListener("load",function(){
+window.addEventListener("load", async function(){
     var $radios = $('input:radio[name=searchOption]');
     if($radios.is(':checked') === false) {
         $radios.filter('[value=all]').prop('checked', true);
     }
     //Search toan bo content, va lay trang dau tien
     index=1;
-    search(index-1,'',urlSearchAll);
+    await search(index-1,'',urlSearchAll);
     let btnSearch=document.getElementById("btn-search");
     let btnPrevious=document.getElementById("previousPage");
     let btnNext=document.getElementById("nextPage");
@@ -26,22 +26,22 @@ window.addEventListener("load",function(){
         btnNext.addEventListener("click",gotoNextPage,false);
     }
 })
-function searchBtnFunction()
+async function searchBtnFunction()
 {
     let url=getURL();
     let mySearchString=document.getElementById("search").value;
     index=1;
-    search(index-1,mySearchString,url);
+    await search(index-1,mySearchString,url);
     showPageNumber();       
 }
-function gotoPreviousPage()
+async function gotoPreviousPage()
 {
     //trang 2 tro di
     if(index>1)
     {
         let url=getURL();
         let mySearchString=document.querySelector("#search").value;
-        search(index-2,mySearchString,url);
+        await search(index-2,mySearchString,url);
         index--;
         showPageNumber();    
     }
@@ -75,7 +75,7 @@ function getURL()
                     if(optionVal==='tourguide')
                         return urlSearchByTourguideName;
 }
-function search(page, searchString,urlSearch) {
+async function search(page, searchString,urlSearch) {
     let formData={searchString};
     $("#divGrid .gridItem").remove(); 
     $.ajax({

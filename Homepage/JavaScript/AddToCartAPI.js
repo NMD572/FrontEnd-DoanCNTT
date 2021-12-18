@@ -10,7 +10,7 @@ window.addEventListener("load",async function(){
     let check=await checkTourAvailable(tourincart,userincart);
     if(check==false)
     {
-        callAPIAddToCart(status,userincart,tourincart);
+        await callAPIAddToCart(status,userincart,tourincart);
     }
     }))
 })
@@ -55,7 +55,7 @@ async function checkTourAvailable(tourincart,userincart)
         return true;
     return false;
 }
-function callAPIAddToCart(status, userincart, tourincart)
+async function callAPIAddToCart(status, userincart, tourincart)
 {
     var formData = {status,userincart, tourincart};
     $.ajax({
